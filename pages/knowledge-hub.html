@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Knowledge Hub — Scholar Junction</title>
+<link rel="stylesheet" href="../assets/css/global.css">
+<link rel="stylesheet" href="../assets/css/knowledge-hub.css">
+</head>
+<body>
+<header class="sj-header">
+  <div class="container-wide sj-header-inner">
+    <a class="sj-brand" href="../index.html"><div class="sj-logo-box"><img src="../assets/img/logo.png"></div><span class="sj-brand-text">Scholar Junction</span></a>
+    <nav class="sj-nav">
+      <a href="../index.html">Home</a>
+      <a href="forum.html">Community</a>
+      <a href="knowledge-hub.html" class="active">Knowledge Hub</a>
+      <a href="projects.html">Projects</a>
+      <a href="ai-assistant.html">AI Assistant</a>
+    </nav>
+    <div class="sj-header-actions">
+      <a href="create-article.html" class="btn btn-primary btn-sm">Write Article</a>
+      <div class="avatar" id="headerAvatar">AS</div>
+    </div>
+  </div>
+</header>
+
+<!-- Hero Section -->
+<div class="kh-hero">
+  <div class="container-wide">
+    <div class="kh-hero-content">
+      <div>
+        <div class="breadcrumb"><a href="../index.html">Home</a> <span class="sep">/</span> Knowledge Hub</div>
+        <h1 class="font-display text-3xl">Knowledge Hub</h1>
+        <div class="text-muted text-sm mt-2">Medium-inspired scholarly publishing • 42,103 articles • peer-reviewed</div>
+      </div>
+      <div class="kh-search">
+        <input class="input" placeholder="Search 42k articles…" style="width:320px;">
+        <select class="select" style="width:160px;"><option>Trending</option><option>Latest</option><option>Most read</option></select>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Navigation Tabs -->
+<div class="kh-nav-tabs">
+  <div class="container-wide">
+    <button class="kh-tab active" data-tab="articles">📄 Articles</button>
+    <button class="kh-tab" data-tab="courses">🎓 Courses</button>
+    <button class="kh-tab" data-tab="books">📚 Books</button>
+    <button class="kh-tab" data-tab="resources">📂 Resources</button>
+  </div>
+</div>
+
+<!-- Main Content -->
+<div class="kh-layout">
+  <!-- Left Sidebar -->
+  <aside class="kh-sidebar">
+    <div class="card">
+      <div class="font-600 mb-2">Categories</div>
+      <div class="cat-list">
+        <a href="#" class="active" data-category="all">All</a>
+        <a href="#" data-category="programming">💻 Programming</a>
+        <a href="#" data-category="cloud">☁️ Cloud</a>
+        <a href="#" data-category="business">💼 Business</a>
+        <a href="#" data-category="ai">🤖 AI</a>
+        <a href="#" data-category="security">🔐 Cybersecurity</a>
+        <a href="#" data-category="math">📐 Mathematics</a>
+        <a href="#" data-category="datascience">📊 Data Science</a>
+        <a href="#" data-category="devops">🚀 DevOps</a>
+      </div>
+      <hr class="soft">
+      <div class="font-600 mb-2 text-sm">Filters</div>
+      <label class="text-sm"><input type="checkbox" checked> Peer-reviewed</label><br>
+      <label class="text-sm"><input type="checkbox"> Open access</label><br>
+      <label class="text-sm"><input type="checkbox"> With code</label>
+      <label class="text-sm"><input type="checkbox"> Free courses</label>
+    </div>
+  </aside>
+
+  <!-- Main Content Area -->
+  <main class="kh-main">
+    <!-- Articles Panel -->
+    <div id="articlesPanel" class="kh-panel active">
+      <div class="flex gap-2 mb-3 flex-wrap">
+        <span class="chip active">Trending</span>
+        <span class="chip">Featured</span>
+        <span class="chip">Following</span>
+        <span class="chip">New</span>
+        <span class="chip">Top Rated</span>
+      </div>
+
+      <div class="article-row">
+        <div class="thumb" style="background-image: url('https://images.unsplash.com/photo-1677442136019-21780ecad995?w=200&h=200&fit=crop');">
+          <span>AI</span>
+        </div>
+        <div>
+          <div class="text-xs text-muted">AI • 9 min • Peer-reviewed</div>
+          <div class="font-600 text-lg mt-1">RAG Architectures that actually scale in 2026</div>
+          <div class="text-sm text-muted mt-2">A production checklist from 14 deployed RAG systems. Hybrid search, graph re-rank, eval harness included.</div>
+          <div class="text-xs text-muted mt-2">Dr. A. Sharma • 4.2k reads • 312 ❤️ • 87 comments</div>
+        </div>
+      </div>
+
+      <div class="article-row">
+        <div class="thumb" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=200&h=200&fit=crop');">
+          <span>Cloud</span>
+        </div>
+        <div>
+          <div class="text-xs text-muted">Cloud • 7 min</div>
+          <div class="font-600 text-lg mt-1">FinOps on EKS: cutting 38% cost with Karpenter</div>
+          <div class="text-sm text-muted mt-2">Real billing data from a Nepali ed-tech at 12k QPS.</div>
+          <div class="text-xs text-muted mt-2">N. Rana • 2.9k reads</div>
+        </div>
+      </div>
+
+      <div class="article-row">
+        <div class="thumb" style="background-image: url('https://images.unsplash.com/photo-1509228468518-180dd4864904?w=200&h=200&fit=crop');">
+          <span>Math</span>
+        </div>
+        <div>
+          <div class="text-xs text-muted">Mathematics • 11 min • Featured</div>
+          <div class="font-600 text-lg mt-1">A friendly intro to Topological Data Analysis</div>
+          <div class="text-sm text-muted mt-2">Persistent homology explained with notebooks.</div>
+          <div class="text-xs text-muted mt-2">Prof. Karki • trending</div>
+        </div>
+      </div>
+
+      <div class="article-row">
+        <div class="thumb" style="background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=200&h=200&fit=crop');">
+          <span>Security</span>
+        </div>
+        <div>
+          <div class="text-xs text-muted">Cybersecurity • 6 min</div>
+          <div class="font-600 text-lg mt-1">LLM prompt injection – a taxonomy for blue teams</div>
+          <div class="text-sm text-muted mt-2">MITRE-style matrix + detection rules.</div>
+          <div class="text-xs text-muted mt-2">S. Thapa • 1.4k reads</div>
+        </div>
+      </div>
+
+      <div class="center mt-4"><button class="btn btn-outline" onclick="showToast('Loading more articles...', 'info')">Load more articles</button></div>
+    </div>
+
+    <!-- Courses Panel -->
+    <div id="coursesPanel" class="kh-panel" style="display:none;">
+      <div class="courses-grid">
+        <!-- Course 1: Machine Learning -->
+        <div class="course-card" onclick="openCourse('https://www.coursera.org/learn/machine-learning')">
+          <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=400&h=200&fit=crop');">
+            <span class="course-badge">Popular</span>
+            <span class="course-level">Beginner</span>
+          </div>
+          <div class="course-body">
+            <div class="course-category">🤖 AI & Machine Learning</div>
+            <h3 class="font-600 mt-1">Complete Machine Learning Bootcamp 2026</h3>
+            <p class="text-sm text-muted mt-2">Learn ML from scratch with Python, TensorFlow, and real-world projects.</p>
+            <div class="course-meta">
+              <span>📹 42 lectures</span>
+              <span>⏱️ 18 hours</span>
+              <span>⭐ 4.8</span>
+            </div>
+            <div class="course-footer">
+              <span class="course-price">Free</span>
+              <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); openCourse('https://www.coursera.org/learn/machine-learning')">Enroll Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Course 2: AWS -->
+        <div class="course-card" onclick="openCourse('https://www.udemy.com/course/aws-certified-solutions-architect-associate-saa-c03/')">
+          <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1544717297-fa95b6ee9643?w=400&h=200&fit=crop');">
+            <span class="course-badge">New</span>
+            <span class="course-level">Intermediate</span>
+          </div>
+          <div class="course-body">
+            <div class="course-category">☁️ Cloud Computing</div>
+            <h3 class="font-600 mt-1">AWS Certified Solutions Architect</h3>
+            <p class="text-sm text-muted mt-2">Master AWS cloud services, architecture, and deployment strategies.</p>
+            <div class="course-meta">
+              <span>📹 35 lectures</span>
+              <span>⏱️ 15 hours</span>
+              <span>⭐ 4.9</span>
+            </div>
+            <div class="course-footer">
+              <span class="course-price">$49.99</span>
+              <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); openCourse('https://www.udemy.com/course/aws-certified-solutions-architect-associate-saa-c03/')">Enroll Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Course 3: Cybersecurity -->
+        <div class="course-card" onclick="openCourse('https://www.udemy.com/course/learn-ethical-hacking-from-scratch/')">
+          <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&h=200&fit=crop');">
+            <span class="course-badge">Featured</span>
+            <span class="course-level">Advanced</span>
+          </div>
+          <div class="course-body">
+            <div class="course-category">🔐 Cybersecurity</div>
+            <h3 class="font-600 mt-1">Advanced Penetration Testing</h3>
+            <p class="text-sm text-muted mt-2">Learn ethical hacking, vulnerability assessment, and security auditing.</p>
+            <div class="course-meta">
+              <span>📹 28 lectures</span>
+              <span>⏱️ 12 hours</span>
+              <span>⭐ 4.7</span>
+            </div>
+            <div class="course-footer">
+              <span class="course-price">$39.99</span>
+              <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); openCourse('https://www.udemy.com/course/learn-ethical-hacking-from-scratch/')">Enroll Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Course 4: Data Science -->
+        <div class="course-card" onclick="openCourse('https://www.coursera.org/specializations/jhu-data-science')">
+          <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=200&fit=crop');">
+            <span class="course-badge">Popular</span>
+            <span class="course-level">Beginner</span>
+          </div>
+          <div class="course-body">
+            <div class="course-category">📊 Data Science</div>
+            <h3 class="font-600 mt-1">Data Science with Python & R</h3>
+            <p class="text-sm text-muted mt-2">Complete data science bootcamp with pandas, numpy, and visualization.</p>
+            <div class="course-meta">
+              <span>📹 50 lectures</span>
+              <span>⏱️ 20 hours</span>
+              <span>⭐ 4.8</span>
+            </div>
+            <div class="course-footer">
+              <span class="course-price">Free</span>
+              <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); openCourse('https://www.coursera.org/specializations/jhu-data-science')">Enroll Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Course 5: DevOps -->
+        <div class="course-card" onclick="openCourse('https://www.udemy.com/course/docker-kubernetes-the-practical-guide/')">
+          <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=400&h=200&fit=crop');">
+            <span class="course-badge">Trending</span>
+            <span class="course-level">Intermediate</span>
+          </div>
+          <div class="course-body">
+            <div class="course-category">🚀 DevOps</div>
+            <h3 class="font-600 mt-1">Docker & Kubernetes: The Practical Guide</h3>
+            <p class="text-sm text-muted mt-2">Master containerization, orchestration, and CI/CD pipelines.</p>
+            <div class="course-meta">
+              <span>📹 38 lectures</span>
+              <span>⏱️ 16 hours</span>
+              <span>⭐ 4.9</span>
+            </div>
+            <div class="course-footer">
+              <span class="course-price">$44.99</span>
+              <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); openCourse('https://www.udemy.com/course/docker-kubernetes-the-practical-guide/')">Enroll Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Course 6: Blockchain -->
+        <div class="course-card" onclick="openCourse('https://www.coursera.org/specializations/blockchain')">
+          <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=400&h=200&fit=crop');">
+            <span class="course-badge">New</span>
+            <span class="course-level">Beginner</span>
+          </div>
+          <div class="course-body">
+            <div class="course-category">⛓️ Blockchain</div>
+            <h3 class="font-600 mt-1">Blockchain Specialization</h3>
+            <p class="text-sm text-muted mt-2">Learn blockchain fundamentals, smart contracts, and DApps.</p>
+            <div class="course-meta">
+              <span>📹 32 lectures</span>
+              <span>⏱️ 14 hours</span>
+              <span>⭐ 4.6</span>
+            </div>
+            <div class="course-footer">
+              <span class="course-price">Free</span>
+              <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); openCourse('https://www.coursera.org/specializations/blockchain')">Enroll Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="center mt-4"><button class="btn btn-outline" onclick="showToast('Loading more courses...', 'info')">Load more courses</button></div>
+    </div>
+
+    <!-- Books Panel -->
+    <div id="booksPanel" class="kh-panel" style="display:none;">
+      <div class="books-grid">
+        <!-- Book 1 -->
+        <div class="book-card" onclick="openBook('https://www.oreilly.com/library/view/clean-code-a/9780136083238/')">
+          <div class="book-cover" style="background-image: url('https://images.unsplash.com/photo-1532012197267-da84d127e765?w=200&h=200&fit=crop');">
+            <span class="book-icon">📘</span>
+          </div>
+          <div class="book-body">
+            <div class="book-category">💻 Programming</div>
+            <h3 class="font-600 mt-1">Clean Code: A Handbook of Agile Software Craftsmanship</h3>
+            <p class="text-sm text-muted mt-2">Robert C. Martin</p>
+            <div class="book-meta">
+              <span>📖 464 pages</span>
+              <span>⭐ 4.8</span>
+              <span class="book-price">$34.99</span>
+            </div>
+            <button class="btn btn-outline btn-sm mt-2" onclick="event.stopPropagation(); openBook('https://www.oreilly.com/library/view/clean-code-a/9780136083238/')">View Book</button>
+          </div>
+        </div>
+
+        <!-- Book 2 -->
+        <div class="book-card" onclick="openBook('https://www.oreilly.com/library/view/designing-data-intensive-applications/9781491903063/')">
+          <div class="book-cover" style="background-image: url('https://images.unsplash.com/photo-1532012197267-da84d127e765?w=200&h=200&fit=crop');">
+            <span class="book-icon">📗</span>
+          </div>
+          <div class="book-body">
+            <div class="book-category">☁️ Cloud</div>
+            <h3 class="font-600 mt-1">Designing Data-Intensive Applications</h3>
+            <p class="text-sm text-muted mt-2">Martin Kleppmann</p>
+            <div class="book-meta">
+              <span>📖 616 pages</span>
+              <span>⭐ 4.9</span>
+              <span class="book-price">$39.99</span>
+            </div>
+            <button class="btn btn-outline btn-sm mt-2" onclick="event.stopPropagation(); openBook('https://www.oreilly.com/library/view/designing-data-intensive-applications/9781491903063/')">View Book</button>
+          </div>
+        </div>
+
+        <!-- Book 3 -->
+        <div class="book-card" onclick="openBook('https://www.oreilly.com/library/view/deep-learning-with/9781617294433/')">
+          <div class="book-cover" style="background-image: url('https://images.unsplash.com/photo-1532012197267-da84d127e765?w=200&h=200&fit=crop');">
+            <span class="book-icon">📕</span>
+          </div>
+          <div class="book-body">
+            <div class="book-category">🤖 AI</div>
+            <h3 class="font-600 mt-1">Deep Learning with Python</h3>
+            <p class="text-sm text-muted mt-2">François Chollet</p>
+            <div class="book-meta">
+              <span>📖 384 pages</span>
+              <span>⭐ 4.7</span>
+              <span class="book-price">$29.99</span>
+            </div>
+            <button class="btn btn-outline btn-sm mt-2" onclick="event.stopPropagation(); openBook('https://www.oreilly.com/library/view/deep-learning-with/9781617294433/')">View Book</button>
+          </div>
+        </div>
+
+        <!-- Book 4 -->
+        <div class="book-card" onclick="openBook('https://www.springer.com/book/9783319110788')">
+          <div class="book-cover" style="background-image: url('https://images.unsplash.com/photo-1532012197267-da84d127e765?w=200&h=200&fit=crop');">
+            <span class="book-icon">📙</span>
+          </div>
+          <div class="book-body">
+            <div class="book-category">📐 Mathematics</div>
+            <h3 class="font-600 mt-1">Linear Algebra Done Right</h3>
+            <p class="text-sm text-muted mt-2">Sheldon Axler</p>
+            <div class="book-meta">
+              <span>📖 384 pages</span>
+              <span>⭐ 4.6</span>
+              <span class="book-price">$44.99</span>
+            </div>
+            <button class="btn btn-outline btn-sm mt-2" onclick="event.stopPropagation(); openBook('https://www.springer.com/book/9783319110788')">View Book</button>
+          </div>
+        </div>
+
+        <!-- Book 5 -->
+        <div class="book-card" onclick="openBook('https://www.oreilly.com/library/view/the-lean-startup/9781449305170/')">
+          <div class="book-cover" style="background-image: url('https://images.unsplash.com/photo-1532012197267-da84d127e765?w=200&h=200&fit=crop');">
+            <span class="book-icon">📒</span>
+          </div>
+          <div class="book-body">
+            <div class="book-category">💼 Business</div>
+            <h3 class="font-600 mt-1">The Lean Startup</h3>
+            <p class="text-sm text-muted mt-2">Eric Ries</p>
+            <div class="book-meta">
+              <span>📖 320 pages</span>
+              <span>⭐ 4.5</span>
+              <span class="book-price">$24.99</span>
+            </div>
+            <button class="btn btn-outline btn-sm mt-2" onclick="event.stopPropagation(); openBook('https://www.oreilly.com/library/view/the-lean-startup/9781449305170/')">View Book</button>
+          </div>
+        </div>
+
+        <!-- Book 6 -->
+        <div class="book-card" onclick="openBook('https://www.oreilly.com/library/view/the-phoenix-project/9781457191354/')">
+          <div class="book-cover" style="background-image: url('https://images.unsplash.com/photo-1532012197267-da84d127e765?w=200&h=200&fit=crop');">
+            <span class="book-icon">📓</span>
+          </div>
+          <div class="book-body">
+            <div class="book-category">🚀 DevOps</div>
+            <h3 class="font-600 mt-1">The Phoenix Project</h3>
+            <p class="text-sm text-muted mt-2">Gene Kim, Kevin Behr, George Spafford</p>
+            <div class="book-meta">
+              <span>📖 432 pages</span>
+              <span>⭐ 4.7</span>
+              <span class="book-price">$29.99</span>
+            </div>
+            <button class="btn btn-outline btn-sm mt-2" onclick="event.stopPropagation(); openBook('https://www.oreilly.com/library/view/the-phoenix-project/9781457191354/')">View Book</button>
+          </div>
+        </div>
+      </div>
+      <div class="center mt-4"><button class="btn btn-outline" onclick="showToast('Loading more books...', 'info')">Load more books</button></div>
+    </div>
+
+    <!-- Resources Panel -->
+    <div id="resourcesPanel" class="kh-panel" style="display:none;">
+      <div class="resources-grid">
+        <div class="resource-card" onclick="openResource('https://scholar.google.com/')">
+          <div class="resource-icon">📄</div>
+          <div class="resource-body">
+            <h3 class="font-600">Research Papers</h3>
+            <p class="text-sm text-muted">Access 10,000+ peer-reviewed papers from top conferences.</p>
+            <button class="btn btn-outline btn-sm mt-2" onclick="event.stopPropagation(); openResource('https://scholar.google.com/')">Browse</button>
+          </div>
+        </div>
+
+        <div class="resource-card" onclick="openResource('https://www.youtube.com/@3blue1brown')">
+          <div class="resource-icon">🎥</div>
+          <div class="resource-body">
+            <h3 class="font-600">Video Lectures</h3>
+            <p class="text-sm text-muted">Watch lectures from top universities and industry experts.</p>
+            <button class="btn btn-outline btn-sm mt-2" onclick="event.stopPropagation(); openResource('https://www.youtube.com/@3blue1brown')">Browse</button>
+          </div>
+        </div>
+
+        <div class="resource-card" onclick="openResource('https://www.kaggle.com/datasets')">
+          <div class="resource-icon">📊</div>
+          <div class="resource-body">
+            <h3 class="font-600">Datasets</h3>
+            <p class="text-sm text-muted">Access curated datasets for research and projects.</p>
+            <button class="btn btn-outline btn-sm mt-2" onclick="event.stopPropagation(); openResource('https://www.kaggle.com/datasets')">Browse</button>
+          </div>
+        </div>
+
+        <div class="resource-card" onclick="openResource('https://www.overleaf.com/')">
+          <div class="resource-icon">📝</div>
+          <div class="resource-body">
+            <h3 class="font-600">Templates</h3>
+            <p class="text-sm text-muted">Research paper templates, LaTeX, and presentation slides.</p>
+            <button class="btn btn-outline btn-sm mt-2" onclick="event.stopPropagation(); openResource('https://www.overleaf.com/')">Browse</button>
+          </div>
+        </div>
+
+        <div class="resource-card" onclick="openResource('https://github.com/')">
+          <div class="resource-icon">🔧</div>
+          <div class="resource-body">
+            <h3 class="font-600">Tools</h3>
+            <p class="text-sm text-muted">Curated list of research tools and software.</p>
+            <button class="btn btn-outline btn-sm mt-2" onclick="event.stopPropagation(); openResource('https://github.com/')">Browse</button>
+          </div>
+        </div>
+
+        <div class="resource-card" onclick="openResource('https://www.ieee.org/conferences/')">
+          <div class="resource-icon">🌐</div>
+          <div class="resource-body">
+            <h3 class="font-600">Conferences</h3>
+            <p class="text-sm text-muted">Upcoming conferences, workshops, and call for papers.</p>
+            <button class="btn btn-outline btn-sm mt-2" onclick="event.stopPropagation(); openResource('https://www.ieee.org/conferences/')">Browse</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Right Sidebar -->
+  <aside class="kh-right">
+    <div class="card">
+      <div class="font-600 mb-2">Popular Authors</div>
+      <div class="text-sm" style="line-height:2;">
+        Dr. A. Sharma — AI<br>
+        N. Rana — Cloud<br>
+        Prof. Karki — Math<br>
+        S. Thapa — Security<br>
+        Dr. M. Joshi — Data Science
+      </div>
+      <button class="btn btn-outline btn-sm mt-3" style="width:100%" onclick="showToast('Following all authors!', 'success')">Follow all</button>
+    </div>
+
+    <div class="card">
+      <div class="font-600 mb-2">Write & Earn</div>
+      <div class="text-sm text-muted">Publish on Scholar Junction, get DOI, monetize with Pro subscribers.</div>
+      <a href="create-article.html" class="btn btn-primary btn-sm mt-3" style="width:100%">Start writing</a>
+    </div>
+
+    <div class="card">
+      <div class="font-600 mb-2">📅 Upcoming Deadlines</div>
+      <div class="text-sm text-muted" style="line-height:1.8;">
+        • IEEE Conf: Sep 15<br>
+        • Springer Journal: Oct 1<br>
+        • ACL Workshop: Oct 15<br>
+        • NeurIPS 2026: Nov 1
+      </div>
+    </div>
+  </aside>
+</div>
+
+<footer class="sj-footer">
+  <div class="footer-bottom container-wide"><span>© 2026 Scholar Junction — Knowledge Hub</span><span><a href="dashboard.html">Dashboard</a></span></div>
+</footer>
+
+<script src="../assets/js/user-db.js"></script>
+<script src="../assets/js/app.js"></script>
+<script src="../assets/js/knowledge-hub.js"></script>
+</body>
+</html>

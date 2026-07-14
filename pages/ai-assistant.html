@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Scholar AI Assistant — Scholar Junction</title>
+<link rel="stylesheet" href="../assets/css/global.css">
+<link rel="stylesheet" href="../assets/css/ai-assistant.css">
+</head>
+<body>
+<header class="sj-header">
+  <div class="container-wide sj-header-inner">
+    <a class="sj-brand" href="../index.html"><div class="sj-logo-box"><img src="../assets/img/logo.png"></div><span class="sj-brand-text">Scholar Junction</span></a>
+    <nav class="sj-nav">
+      <a href="knowledge-hub.html">Knowledge Hub</a>
+      <a href="projects.html">Projects</a>
+      <a href="ai-assistant.html" class="active">AI Assistant</a>
+    </nav>
+    <div class="sj-header-actions">
+      <a href="dashboard.html" class="btn btn-ghost btn-sm">Dashboard</a>
+      <div class="avatar" id="headerAvatar">AS</div>
+    </div>
+  </div>
+</header>
+
+<div class="ai-shell">
+  <!-- Sidebar -->
+  <aside class="ai-side">
+    <button class="btn btn-primary" style="width:100%;" onclick="newChat()">＋ New Chat</button>
+    
+    <div class="text-xs text-muted" style="margin:14px 0 8px; text-transform:uppercase; letter-spacing:.06em;">Recent Chats</div>
+    <div class="chat-history" id="chatHistory">
+      <!-- Will be populated by JavaScript -->
+    </div>
+    
+    <hr class="soft">
+    
+    <div class="text-xs text-muted" style="text-transform:uppercase; letter-spacing:.06em; margin-bottom:8px;">Templates</div>
+    <div class="template-list" id="templateList">
+      <div class="template-item" onclick="useTemplate('Summarize')">📄 Summarize</div>
+      <div class="template-item" onclick="useTemplate('Study Plan')">📚 Study Plan</div>
+      <div class="template-item" onclick="useTemplate('Career Advice')">💼 Career Advice</div>
+      <div class="template-item" onclick="useTemplate('Project Ideas')">💡 Project Ideas</div>
+      <div class="template-item" onclick="useTemplate('Explain Concepts')">🧠 Explain Concepts</div>
+      <div class="template-item" onclick="useTemplate('Research Questions')">🔬 Research Questions</div>
+      <div class="template-item" onclick="useTemplate('Flashcards')">📝 Flashcards</div>
+    </div>
+
+    <hr class="soft">
+    
+    <div class="ai-status">
+      <div class="status-dot online"></div>
+      <span class="text-xs text-muted">AI Online • v2.4</span>
+    </div>
+  </aside>
+
+  <!-- Main Chat Area -->
+  <main class="ai-main">
+    <div class="chat-area" id="chatArea">
+      <!-- Welcome Screen -->
+      <div id="welcomeScreen">
+        <div class="ai-welcome">
+          <div class="ai-logo">🤖</div>
+          <h1 class="font-display text-2xl">Scholar AI Assistant</h1>
+          <p class="text-muted text-sm mt-2">ChatGPT-inspired • Cited • Academic-safe • v2.4</p>
+          <div class="ai-features">
+            <span class="feature-badge">📄 Summarize</span>
+            <span class="feature-badge">📚 Study Plans</span>
+            <span class="feature-badge">💼 Career Advice</span>
+            <span class="feature-badge">💡 Project Ideas</span>
+            <span class="feature-badge">🧠 Explain Concepts</span>
+            <span class="feature-badge">📝 Citations</span>
+          </div>
+        </div>
+
+        <div class="prompt-grid" id="promptGrid">
+          <div class="prompt-card" onclick="sendPrompt('Summarize this paper with APA citations')">
+            <span>📄</span> Summarize this paper with APA citations
+          </div>
+          <div class="prompt-card" onclick="sendPrompt('Build a 12-week ML study plan')">
+            <span>📚</span> Build a 12-week ML study plan
+          </div>
+          <div class="prompt-card" onclick="sendPrompt('Explain backpropagation like I\'m in +2')">
+            <span>🧠</span> Explain backpropagation like I'm in +2
+          </div>
+          <div class="prompt-card" onclick="sendPrompt('Give 5 research project ideas')">
+            <span>💡</span> Give 5 research project ideas
+          </div>
+          <div class="prompt-card" onclick="sendPrompt('Career roadmap: ML Engineer Nepal')">
+            <span>💼</span> Career roadmap: ML Engineer Nepal
+          </div>
+          <div class="prompt-card" onclick="sendPrompt('Create flashcards from notes')">
+            <span>📝</span> Create flashcards from notes
+          </div>
+        </div>
+      </div>
+
+      <!-- Chat Messages -->
+      <div id="chatMessages" style="display:none;">
+        <!-- Messages will be rendered here -->
+      </div>
+
+      <!-- Typing Indicator -->
+      <div id="typingIndicator" style="display:none;" class="typing-indicator">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="text-sm text-muted">Scholar AI is thinking...</span>
+      </div>
+    </div>
+
+    <!-- Composer -->
+    <div class="composer">
+      <div style="max-width:860px; margin:0 auto;">
+        <div style="display:flex; gap:10px;">
+          <input class="input" id="chatInput" placeholder="Ask Scholar AI anything… (⌘⏎ to send)" style="flex:1;" onkeydown="handleKeyDown(event)">
+          <button class="btn btn-primary" onclick="sendMessage()">Send →</button>
+        </div>
+        <div class="composer-tools">
+          <div class="text-xs text-muted mt-2">
+            <span class="tool-badge" onclick="toggleFeature('citations')">📝 Citations ON</span>
+            <span class="tool-badge" onclick="toggleFeature('code')">💻 Code</span>
+            <span class="tool-badge" onclick="toggleFeature('explain')">🧠 Explain</span>
+            <span class="tool-badge" onclick="clearChat()">🗑️ Clear Chat</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- Toast Container -->
+<div class="toast-container"></div>
+
+<script src="../assets/js/user-db.js"></script>
+<script src="../assets/js/app.js"></script>
+<script src="../assets/js/ai-assistant.js"></script>
+</body>
+</html>

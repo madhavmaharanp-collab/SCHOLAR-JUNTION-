@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Dashboard — Scholar Junction</title>
+<link rel="stylesheet" href="../assets/css/global.css">
+<link rel="stylesheet" href="../assets/css/dashboard.css">
+
+</head>
+<body>
+<div class="app-shell">
+  <!-- SIDEBAR -->
+  <aside class="app-sidebar">
+    <div class="sidebar-brand">
+      <div class="sj-logo-box" style="width:38px;height:38px;"><img src="../assets/img/logo.png" alt=""></div>
+      <span>Scholar Junction</span>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="active">📊 Dashboard</a>
+      <a href="profile.html">👤 Profile</a>
+      <a href="knowledge-hub.html">📚 Knowledge Hub</a>
+      <a href="events.html">📅 Events</a>
+      <a href="projects.html">🧪 Projects</a>
+      <a href="resources.html">📂 Resources</a>
+      <a href="collaboration.html">🤝 Collaboration</a>
+      <a href="ai-assistant.html">🤖 AI Assistant</a>
+      <div class="sidebar-section">Communicate</div>
+      <a href="messages.html">💬 Messages <span class="badge" style="margin-left:auto">3</span></a>
+      <a href="notifications.html">🔔 Notifications</a>
+      <a href="settings.html">⚙️ Settings</a>
+    </nav>
+    <div style="margin-top:18px; padding:12px;" class="card">
+      <div class="text-sm font-600">Pro workspace</div>
+      <div class="text-xs text-muted mt-2">Unlimited AI, private teams.</div>
+      <button class="btn btn-primary btn-sm mt-3" style="width:100%" onclick="showToast('Upgrade flow coming soon!', 'info')">Upgrade</button>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="app-main">
+    <div class="app-topbar">
+      <div class="flex items-center gap-3">
+        <button class="icon-btn burger" data-burger>☰</button>
+        <div>
+          <div class="breadcrumb"><a href="../index.html">Home</a> <span class="sep">/</span> <strong>Dashboard</strong></div>
+        </div>
+      </div>
+      <div class="flex items-center gap-3">
+        <input class="input" placeholder="Search articles, people, projects…" style="width:320px; max-width:38vw;">
+        <button class="icon-btn" onclick="showToast('🔔 No new notifications', 'info')">🔔</button>
+        <button class="icon-btn" onclick="showToast('💬 Messages coming soon', 'info')">💬</button>
+        <div class="avatar" id="headerAvatar">AS</div>
+      </div>
+    </div>
+
+    <div class="app-content">
+      <div class="dash-grid" id="dashboardContent">
+        <!-- Welcome - Will be updated by JS -->
+        <div class="col-8">
+          <div class="welcome" id="welcomeSection">
+            <div class="text-sm" style="opacity:.9" id="welcomeGreeting">Welcome back, Scholar 👋</div>
+            <h2 class="font-display" style="font-size:26px; margin-top:6px;" id="welcomeTitle">Your scholar week at a glance</h2>
+            <p style="opacity:.92; margin-top:6px; font-size:14.5px;" id="welcomeDesc">2 events today • 1 project PR due • Scholar AI saved you 3.4 hrs this week</p>
+            <div class="mt-4" style="display:flex; gap:10px; flex-wrap:wrap;">
+              <a href="create-article.html" class="btn" style="background:white; color:#1d4ed8;">+ Write Article</a>
+              <a href="create-event.html" class="btn btn-outline" style="color:white; border-color:rgba(255,255,255,.5);">Create Event</a>
+              <a href="ai-assistant.html" class="btn btn-ghost" style="color:white;">Open AI →</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="metric">
+            <div class="text-sm text-muted">Learning Progress</div>
+            <div class="text-2xl font-700 mt-2" id="learningProgress">73%</div>
+            <div class="progress-track mt-3"><div class="progress-fill" id="progressFill" style="width:73%"></div></div>
+            <div class="text-xs text-muted mt-2" id="learningLabel">ML Specialization • Week 6/8</div>
+          </div>
+        </div>
+
+        <!-- Upcoming events -->
+        <div class="col-4">
+          <div class="card">
+            <div class="font-600 mb-3">Upcoming Events</div>
+            <div class="list-card">
+              <div class="list-item">
+                <div><div class="font-600 text-sm">AI Research Summit</div><div class="text-xs text-muted">Today 7:15 PM • Online</div></div>
+                <span class="badge badge-green">Join</span>
+              </div>
+              <div class="list-item">
+                <div><div class="font-600 text-sm">Cloud Study Jam</div><div class="text-xs text-muted">Jul 14 • Kathmandu</div></div>
+                <span class="tag">244 going</span>
+              </div>
+              <div class="list-item">
+                <div><div class="font-600 text-sm">Paper Review Clinic</div><div class="text-xs text-muted">Jul 18</div></div>
+                <span class="tag">RSVP</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Trending articles -->
+        <div class="col-4">
+          <div class="card">
+            <div class="font-600 mb-3">Trending Articles</div>
+            <div style="display:grid; gap:12px; font-size:14px;">
+              <div>📘 RAG Architectures that scale — <span class="text-muted">4.2k</span></div>
+              <div>☁️ FinOps on EKS — <span class="text-muted">2.9k</span></div>
+              <div>🧮 Topological Data Analysis — <span class="text-muted">1.8k</span></div>
+            </div>
+            <a href="knowledge-hub.html" class="text-sm mt-3" style="display:inline-block;color:#2563EB;">Open Knowledge Hub →</a>
+          </div>
+        </div>
+        
+
+        <!-- My projects -->
+        <div class="col-4">
+          <div class="card">
+            <div class="font-600 mb-3">My Projects</div>
+            <div class="text-sm">ScholarGraph <span class="text-muted">• ⭐ 18 today</span></div>
+            <div class="text-sm mt-2">NepalEdu Cloud <span class="text-muted">• PR #42 pending</span></div>
+            <div class="mt-3"><a href="projects.html" class="btn btn-outline btn-sm">View showcase</a></div>
+          </div>
+        </div>
+
+        <!-- AI Suggestions -->
+        <div class="col-6">
+          <div class="card">
+            <div class="font-600 mb-2">AI Suggestions</div>
+            <div class="text-sm text-muted">Personalized by Scholar AI</div>
+            <ul style="margin-top:12px; line-height:1.9; font-size:14px;">
+              <li>• Complete “Attention mechanism” quiz — 12 min</li>
+              <li>• 2 teammates match your Rust + RAG stack</li>
+              <li>• Summarize 3 saved papers into notes?</li>
+              <li>• Career: ML Engineer Intern at Leapfrog — 94% fit</li>
+            </ul>
+            <div class="mt-3"><a href="ai-assistant.html" class="btn btn-primary btn-sm">Ask Scholar AI</a></div>
+          </div>
+        </div>
+
+        <!-- Task list -->
+        <div class="col-6">
+          <div class="card">
+            <div class="flex justify-between items-center mb-2"><div class="font-600">Task List</div><span class="text-xs text-muted">4 open</span></div>
+            <div class="task"><input type="checkbox"> Finish RAG article draft</div>
+            <div class="task"><input type="checkbox" checked> Submit event banner</div>
+            <div class="task"><input type="checkbox"> Review teammate PR</div>
+            <div class="task"><input type="checkbox"> Prepare IEEE workshop slides</div>
+          </div>
+        </div>
+
+        <!-- Recent activity + calendar -->
+        <div class="col-8">
+          <div class="card">
+            <div class="font-600 mb-3">Recent Activity</div>
+            <div style="font-size:14px; line-height:2;" id="recentActivity">
+              <div>✅ You published <b>“Vector DB shootout 2026”</b> — 312 reads</div>
+              <div>💬 Maya commented on ScholarGraph</div>
+              <div>⭐ Your project got 18 new stars</div>
+              <div>📅 You RSVP’d to Cloud Study Jam</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card">
+            <div class="font-600 mb-3">July 2026</div>
+            <div class="calendar-mini">
+              <div>S</div><div>M</div><div>T</div><div>W</div><div>T</div><div>F</div><div>S</div>
+              <div></div><div></div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div>
+              <div>6</div><div>7</div><div>8</div><div>9</div><div class="today">10</div><div>11</div><div>12</div>
+              <div>13</div><div>14</div><div>15</div><div>16</div><div>17</div><div>18</div><div>19</div>
+            </div>
+            <div class="text-xs text-muted mt-3">3 events this week • Sync calendar</div>
+          </div>
+        </div>
+
+        <!-- Quick actions -->
+        <div class="col-12">
+          <div class="card">
+            <div class="font-600 mb-3">Quick Actions</div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <a href="create-article.html" class="btn btn-outline btn-sm">✍️ Write Article</a>
+              <a href="create-project.html" class="btn btn-outline btn-sm">🧪 New Project</a>
+              <a href="create-event.html" class="btn btn-outline btn-sm">📅 Create Event</a>
+              <a href="resources.html" class="btn btn-outline btn-sm">📤 Upload Resource</a>
+              <a href="collaboration.html" class="btn btn-outline btn-sm">🤝 Find Teammates</a>
+              <a href="ai-assistant.html" class="btn btn-primary btn-sm">🤖 Scholar AI</a>
+            </div>
+          </div>
+        </div>
+        <!-- Profile Verification Card -->
+            <div class="col-12">
+              <div class="card" id="verificationCard">
+                <div class="flex justify-between items-center">
+                  <div>
+                    <div class="font-600 text-lg"> Profile Verification</div>
+                    <div class="text-sm text-muted mt-1">Get verified to unlock more features</div>
+                  </div>
+                  <div id="verificationStatusBadge">
+                    <span class="badge badge-gray">Loading...</span>
+                  </div>
+                </div>
+                <div id="verificationContent" class="mt-4">
+                  <!-- Will be populated by JS -->
+                </div>
+              </div>
+            </div>
+      </div>
+      <footer style="margin-top:30px; color:#94a3b8; font-size:12px;">© 2026 Scholar Junction • Dashboard v2.4 • <a href="../index.html">Landing</a> • <a href="settings.html">Settings</a></footer>
+    </div>
+  </div>
+</div>
+
+<!-- Toast Container -->
+<div class="toast-container"></div>
+
+<script src="../assets/js/user-db.js"></script>
+<script src="../assets/js/app.js"></script>
+<script src="../assets/js/dashboard.js"></script>
+</body>
+</html>

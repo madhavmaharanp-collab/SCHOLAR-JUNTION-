@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Profile Setup — Scholar Junction</title>
+<link rel="stylesheet" href="../assets/css/global.css">
+<link rel="stylesheet" href="../assets/css/profile-setup.css">
+</head>
+<body>
+<header class="sj-header">
+  <div class="container-wide sj-header-inner">
+    <a class="sj-brand" href="../index.html">
+      <div class="sj-logo-box"><img src="../assets/img/logo.png" alt="SJ"></div>
+      <span class="sj-brand-text">Scholar Junction</span>
+    </a>
+    <div class="text-sm text-muted">Profile Setup Wizard • Step <span id="stepNum">1</span>/4</div>
+    <a href="dashboard.html" class="btn btn-ghost btn-sm">Skip →</a>
+  </div>
+</header>
+
+<div class="wizard">
+  <h1 class="font-display text-3xl center">Welcome to Scholar Junction</h1>
+  <p class="text-muted center mt-2">Let’s personalize your academic workspace in 60 seconds.</p>
+  <div class="progress"><span id="prog"></span></div>
+
+<!-- STEP 1 -->
+<div class="step-card" data-step="1">
+  <h3 class="font-600 text-xl mb-4">Step 1 — Your profile</h3>
+  
+  <!-- Avatar Upload Section -->
+  <div style="display:flex; gap:24px; align-items:center; margin-bottom:24px; flex-wrap:wrap;">
+    <div class="avatar-upload-wrapper">
+      <div class="avatar-upload" id="avatarUpload">
+        <div class="avatar-preview" id="avatarPreview">
+          <span class="avatar-placeholder">📷</span>
+          <img id="avatarImage" style="display:none; width:100%; height:100%; object-fit:cover; border-radius:50%;" alt="Profile photo">
+        </div>
+        <input type="file" id="avatarInput" accept="image/jpeg,image/png,image/gif,image/webp" style="display:none;">
+        <div class="avatar-overlay">
+          <span>📷</span>
+          <span style="font-size:11px;">Upload Photo</span>
+        </div>
+      </div>
+      <div class="text-sm text-muted" style="max-width:200px;">
+        Click to upload<br>
+        <span style="font-size:11px;">400×400 recommended<br>JPG/PNG, max 2MB</span>
+      </div>
+    </div>
+    
+    <!-- Upload status -->
+    <div id="uploadStatus" style="display:none;" class="upload-status">
+      <span id="uploadStatusText"></span>
+    </div>
+  </div>
+  
+  <!-- Form fields -->
+  <div class="step-grid">
+    <div class="form-row">
+      <label class="label">Full name</label>
+      <input class="input" id="profileName" placeholder="Aarav Sharma">
+    </div>
+    <div class="form-row">
+      <label class="label">Country</label>
+      <select class="select" id="profileCountry">
+        <option value="">Select your country</option>
+        <option value="Nepal">🇳🇵 Nepal</option>
+        <option value="India">🇮🇳 India</option>
+        <option value="USA">🇺🇸 USA</option>
+        <option value="UK">🇬🇧 UK</option>
+        <option value="Germany">🇩🇪 Germany</option>
+        <option value="Singapore">🇸🇬 Singapore</option>
+        <option value="Canada">🇨🇦 Canada</option>
+        <option value="Australia">🇦🇺 Australia</option>
+        <option value="Other">🌍 Other</option>
+      </select>
+    </div>
+  </div>
+  
+  <div class="flex justify-between mt-6">
+    <span></span>
+    <button class="btn btn-primary next">Continue →</button>
+  </div>
+</div>
+
+  <!-- STEP 2 -->
+  <div class="step-card" data-step="2" hidden>
+    <h3 class="font-600 text-xl mb-4">Step 2 — Your role</h3>
+    <div class="step-grid">
+      <div class="role-card active" data-role="student">
+        <div class="text-lg font-600">🎓 Student</div>
+        <div class="text-sm text-muted mt-2">Access courses, communities, project collaboration, and Scholar AI.</div>
+      </div>
+      <div class="role-card" data-role="teacher">
+        <div class="text-lg font-600">👩‍🏫 Teacher</div>
+        <div class="text-sm text-muted mt-2">Publish articles, host events, mentor teams, and lead communities.</div>
+      </div>
+    </div>
+    <div class="flex justify-between mt-6">
+      <button class="btn btn-ghost prev">← Back</button>
+      <button class="btn btn-primary next">Continue →</button>
+    </div>
+  </div>
+
+  <!-- STEP 3 Student -->
+<div class="step-card" data-step="3" hidden>
+  <h3 class="font-600 text-xl mb-4">Step 3 — Academic details</h3>
+  <div id="studentFields">
+    <div class="step-grid">
+      <div class="form-row">
+        <label class="label">Education Level</label>
+        <select class="select" id="educationLevel">
+          <option value="">Select</option>
+          <option value="+2">+2</option>
+          <option value="Bachelor">Bachelor</option>
+          <option value="Master">Master</option>
+          <option value="PhD">PhD</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label class="label">University</label>
+        <input class="input" id="university" placeholder="Enter your university name">
+      </div>
+      <div class="form-row">
+        <label class="label">Semester</label>
+        <input class="input" id="semester" placeholder="e.g., 5th">
+      </div>
+      <div class="form-row">
+        <label class="label">Skills (comma separated)</label>
+        <input class="input" id="skills" placeholder="e.g., Python, React, ML">
+      </div>
+    </div>
+    <div class="form-row mt-2">
+      <label class="label">Interests (click to select)</label>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;">
+        <span class="chip" data-interest="AI">🤖 AI</span>
+        <span class="chip" data-interest="Cloud">☁️ Cloud</span>
+        <span class="chip" data-interest="Cybersecurity">🔐 Cybersecurity</span>
+        <span class="chip" data-interest="Mathematics">📐 Mathematics</span>
+        <span class="chip" data-interest="Business">💼 Business</span>
+        <span class="chip" data-interest="Programming">💻 Programming</span>
+      </div>
+    </div>
+  </div>
+  <div id="teacherFields" hidden>
+    <div class="step-grid">
+      <div class="form-row">
+        <label class="label">Department</label>
+        <input class="input" id="department" placeholder="e.g., Computer Engineering">
+      </div>
+      <div class="form-row">
+        <label class="label">Subject</label>
+        <input class="input" id="subject" placeholder="e.g., Machine Learning">
+      </div>
+      <div class="form-row">
+        <label class="label">Experience (years)</label>
+        <input class="input" id="experience" type="number" placeholder="5">
+      </div>
+      <div class="form-row">
+        <label class="label">Research Area</label>
+        <input class="input" id="research" placeholder="e.g., NLP, RAG">
+      </div>
+    </div>
+  </div>
+  <div class="step-status" data-step="3"></div>
+  <div class="flex justify-between mt-6">
+    <button class="btn btn-ghost prev">← Back</button>
+    <button class="btn btn-primary next" disabled style="opacity:0.5; cursor:not-allowed; pointer-events:none;">Continue →</button>
+  </div>
+</div>
+
+  <!-- STEP 4 -->
+<div class="step-card" data-step="4" hidden>
+  <h3 class="font-600 text-xl mb-4">Step 4 — Finish your profile</h3>
+  
+  <!-- Bio Section -->
+  <div class="form-row">
+    <label class="label">Bio <span style="color:#EF4444; font-size:12px;">*</span></label>
+    <textarea class="textarea" id="bioTextarea" rows="4" placeholder="Tell us about yourself... (minimum 20 characters)"></textarea>
+    <div style="font-size:12px; color:#94a3b8; margin-top:4px; text-align:right;">
+      <span id="charCount">0</span>/20 characters minimum
+    </div>
+  </div>
+
+  <!-- Social Links -->
+  <div class="step-grid">
+    <div class="form-row">
+      <label class="label">LinkedIn</label>
+      <div style="position:relative;">
+        <span style="position:absolute; left:12px; top:50%; transform:translateY(-50%); opacity:0.5;">🔗</span>
+        <input class="input" id="linkedin" placeholder="linkedin.com/in/your-profile" style="padding-left:36px;">
+      </div>
+    </div>
+    <div class="form-row">
+      <label class="label">GitHub</label>
+      <div style="position:relative;">
+        <span style="position:absolute; left:12px; top:50%; transform:translateY(-50%); opacity:0.5;">🐙</span>
+        <input class="input" id="github" placeholder="github.com/your-username" style="padding-left:36px;">
+      </div>
+    </div>
+    <div class="form-row">
+      <label class="label">Website / Portfolio</label>
+      <div style="position:relative;">
+        <span style="position:absolute; left:12px; top:50%; transform:translateY(-50%); opacity:0.5;">🌐</span>
+        <input class="input" id="website" placeholder="https://your-portfolio.com" style="padding-left:36px;">
+      </div>
+    </div>
+    <div class="form-row">
+      <label class="label">X / Twitter</label>
+      <div style="position:relative;">
+        <span style="position:absolute; left:12px; top:50%; transform:translateY(-50%); opacity:0.5;">🐦</span>
+        <input class="input" id="twitter" placeholder="@yourhandle" style="padding-left:36px;">
+      </div>
+    </div>
+  </div>
+
+  <div class="step-status" data-step="4"></div>
+
+  <div class="flex justify-between mt-6">
+    <button class="btn btn-ghost prev">← Back</button>
+    <button class="btn btn-primary next" disabled style="opacity:0.5; cursor:not-allowed; pointer-events:none;">Finish → Go to Dashboard</button>
+  </div>
+</div>
+
+  <p class="text-xs text-muted center mt-6">You can edit all details later in Settings • Encrypted & private</p>
+</div>
+
+<script src="../assets/js/app.js"></script>
+<script>
+let step=1; const total=4;
+function render(){
+  document.querySelectorAll('[data-step]').forEach(el=> el.hidden = parseInt(el.dataset.step)!==step);
+  document.getElementById('stepNum').textContent=step;
+  document.getElementById('prog').style.width = (step/total*100)+'%';
+}
+document.querySelectorAll('.next').forEach(b=> b.addEventListener('click', ()=>{ if(step<total){ step++; render(); }}));
+document.querySelectorAll('.prev').forEach(b=> b.addEventListener('click', ()=>{ if(step>1){ step--; render(); }}));
+document.querySelectorAll('.role-card').forEach(c=>{
+  c.addEventListener('click', ()=>{
+    document.querySelectorAll('.role-card').forEach(x=>x.classList.remove('active'));
+    c.classList.add('active');
+    const role=c.dataset.role;
+    document.getElementById('studentFields').hidden = role!=='student';
+    document.getElementById('teacherFields').hidden = role==='student';
+  });
+});
+document.querySelectorAll('.chip').forEach(ch=> ch.addEventListener('click', ()=> ch.classList.toggle('active')));
+render();
+</script>
+<script src="../assets/js/profile-setup.js"></script>
+</body>
+</html>

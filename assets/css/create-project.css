@@ -1,0 +1,11 @@
+/* Scholar Junction - page specific styles */
+/* Design tokens inherited from tokens.css + global.css */
+.page-hero { padding: 48px 0; }
+.page-card { background: var(--card); border:1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow-sm); padding:22px; transition:.18s; }
+.page-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.gradient-text { background: var(--grad-primary); -webkit-background-clip:text; background-clip:text; color:transparent; }
+/* Glassmorphism utility */
+.glass { background: var(--glass); backdrop-filter: blur(16px) saturate(160%); border:1px solid var(--glass-border); }
+
+/* create-project page */
+.create-project-page { min-height: 60vh; }

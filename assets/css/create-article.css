@@ -1,0 +1,6 @@
+/* Scholar Junction – create-article styles */
+/* Inherits tokens.css + global.css */
+.editor-shell{max-width:980px;margin:24px auto;padding:0 24px;display:grid;grid-template-columns:1fr 320px;gap:18px}
+@media(max-width:1000px){.editor-shell{grid-template-columns:1fr}
+}
+.editor{ min-height:420px; border:1px solid var(--border); border-radius:14px; padding:16px; background:#fff}

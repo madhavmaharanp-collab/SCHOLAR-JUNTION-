@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Messages — Scholar Junction</title>
+<link rel="stylesheet" href="../assets/css/global.css">
+<link rel="stylesheet" href="../assets/css/messages.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="app-sidebar">
+    <div class="sidebar-brand">
+      <div class="sj-logo-box" style="width:38px;height:38px"><img src="../assets/img/logo.png"></div>
+      <b>Scholar Junction</b>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html">📊 Dashboard</a>
+      <a href="messages.html" class="active">💬 Messages</a>
+      <a href="notifications.html">🔔 Notifications</a>
+      <a href="collaboration.html">🤝 Collaboration</a>
+      <a href="settings.html">⚙️ Settings</a>
+    </nav>
+  </aside>
+
+  <div class="app-main">
+    <div class="app-topbar">
+      <div class="breadcrumb">
+        <a href="../index.html">Home</a> 
+        <span class="sep">/</span> 
+        <a href="dashboard.html">Dashboard</a>
+        <span class="sep">/</span> 
+        <strong>Messages</strong>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <button class="btn btn-outline btn-sm" onclick="showToast('🎥 Video call feature coming soon', 'info')">🎥 Video Call</button>
+        <button class="btn btn-outline btn-sm" onclick="showToast('🎙 Voice call feature coming soon', 'info')">🎙 Voice</button>
+        <a href="dashboard.html" class="btn btn-outline btn-sm">← Dashboard</a>
+        <div class="avatar" id="headerAvatar">AS</div>
+      </div>
+    </div>
+
+    <div class="msg-shell">
+      <!-- Conversation List -->
+      <div class="conv-list" id="convList">
+        <div style="padding:12px;">
+          <input class="input" placeholder="Search conversations..." id="convSearch" oninput="searchConversations(this.value)">
+        </div>
+        <div id="conversationItems">
+          <!-- Will be populated by JavaScript -->
+        </div>
+        <div style="padding:12px; border-top:1px solid #f1f5f9;">
+          <button class="btn btn-primary btn-sm" style="width:100%;" onclick="openNewMessage()">✏️ New Message</button>
+        </div>
+      </div>
+
+      <!-- Chat Pane -->
+      <div class="chat-pane" id="chatPane">
+        <!-- Chat Header -->
+        <div class="chat-header" id="chatHeader">
+          <div class="chat-header-info">
+            <div class="chat-avatar" id="chatAvatar">👤</div>
+            <div>
+              <div class="chat-name" id="chatName">Select a conversation</div>
+              <div class="chat-status" id="chatStatus">Click a conversation to start messaging</div>
+            </div>
+          </div>
+          <div class="chat-header-actions">
+            <span class="text-xs text-muted" id="chatType">Encrypted</span>
+          </div>
+        </div>
+
+        <!-- Chat Log -->
+        <div class="chat-log" id="chatLog">
+          <div class="empty-chat" id="emptyChat">
+            <span style="font-size:48px;display:block;margin-bottom:16px;">💬</span>
+            <h3 style="color:#0f172a;">No conversation selected</h3>
+            <p style="color:#94a3b8;">Select a conversation from the left or start a new one</p>
+          </div>
+        </div>
+
+        <!-- Chat Composer -->
+        <div class="chat-composer" id="chatComposer" style="display:none;">
+          <div style="display:flex; gap:10px; align-items:center;">
+            <button class="icon-btn" onclick="showToast('📎 Attachment feature coming soon', 'info')">📎</button>
+            <button class="icon-btn" onclick="showToast('😊 Emoji picker coming soon', 'info')">😊</button>
+            <input class="input" placeholder="Type a message..." id="messageInput" style="flex:1;" onkeydown="handleMessageKey(event)">
+            <button class="btn btn-primary" onclick="sendMessage()">Send →</button>
+          </div>
+          <div class="composer-tools">
+            <span class="text-xs text-muted">/scholar-ai • Attachments • Emoji • Encrypted</span>
+            <span class="text-xs text-muted" id="typingStatus"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- New Message Modal -->
+<div class="msg-modal" id="newMessageModal">
+  <div class="modal-overlay" onclick="closeNewMessage()"></div>
+  <div class="modal-content" style="max-width:500px;">
+    <button class="modal-close" onclick="closeNewMessage()">✕</button>
+    <div class="modal-body" style="padding:30px;">
+      <h2 style="font-family:'Poppins',sans-serif; font-size:22px; margin-bottom:20px;">✏️ New Message</h2>
+      <div class="form-row">
+        <label class="label">Search for a user</label>
+        <input class="input" placeholder="Type a name or email..." id="userSearch" oninput="searchUsers(this.value)">
+      </div>
+      <div id="userSearchResults" style="max-height:300px;overflow-y:auto;">
+        <!-- Will be populated -->
+      </div>
+      <div style="margin-top:16px; display:flex; gap:12px;">
+        <button class="btn btn-outline" style="flex:1;" onclick="closeNewMessage()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast Container -->
+<div class="toast-container"></div>
+
+<script src="../assets/js/user-db.js"></script>
+<script src="../assets/js/app.js"></script>
+<script src="../assets/js/messages.js"></script>
+</body>
+</html>

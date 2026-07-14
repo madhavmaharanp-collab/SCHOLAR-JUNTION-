@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Resource Library — Scholar Junction</title>
+<link rel="stylesheet" href="../assets/css/global.css">
+<link rel="stylesheet" href="../assets/css/resources.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="app-sidebar">
+    <div class="sidebar-brand">
+      <div class="sj-logo-box" style="width:38px;height:38px"><img src="../assets/img/logo.png"></div>
+      <b>Scholar Junction</b>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html">📊 Dashboard</a>
+      <a href="resources.html" class="active">📂 Resources</a>
+      <a href="knowledge-hub.html">📚 Knowledge Hub</a>
+      <a href="projects.html">🧪 Projects</a>
+      <a href="collaboration.html">🤝 Collaboration</a>
+    </nav>
+  </aside>
+
+  <div class="app-main">
+    <div class="app-topbar">
+      <div class="breadcrumb">
+        <a href="../index.html">Home</a> 
+        <span class="sep">/</span> 
+        <a href="dashboard.html">Dashboard</a>
+        <span class="sep">/</span> 
+        <strong>Resource Library</strong>
+      </div>
+      <div class="flex items-center gap-3">
+        <button class="btn btn-primary btn-sm" onclick="openUploadResource()">📤 Upload Resource</button>
+        <a href="dashboard.html" class="btn btn-outline btn-sm">← Dashboard</a>
+        <div class="avatar" id="headerAvatar">AS</div>
+      </div>
+    </div>
+
+    <div class="app-content">
+      <!-- Header -->
+      <div class="resources-header">
+        <div>
+          <h1 class="font-display text-3xl">📂 Resource Library</h1>
+          <div class="text-muted text-sm mt-1"><span id="resourceCount">0</span> resources available</div>
+        </div>
+        <div class="resources-stats">
+          <div class="stat-chip"><span>📥</span> <span id="totalDownloads">0</span> Downloads</div>
+          <div class="stat-chip"><span>📌</span> <span id="totalBookmarks">0</span> Bookmarks</div>
+          <div class="stat-chip"><span>👁️</span> <span id="totalViews">0</span> Views</div>
+        </div>
+      </div>
+
+      <!-- Search & Filters -->
+      <div class="resources-filters">
+        <div class="filter-group">
+          <span class="chip active" data-filter="all" onclick="filterResources('all')">📋 All</span>
+          <span class="chip" data-filter="pdf" onclick="filterResources('pdf')">📄 PDF</span>
+          <span class="chip" data-filter="video" onclick="filterResources('video')">🎥 Videos</span>
+          <span class="chip" data-filter="ppt" onclick="filterResources('ppt')">📊 PPT</span>
+          <span class="chip" data-filter="book" onclick="filterResources('book')">📚 Books</span>
+          <span class="chip" data-filter="link" onclick="filterResources('link')">🔗 Links</span>
+          <span class="chip" data-filter="my" onclick="filterResources('my')">📌 My Uploads</span>
+        </div>
+        <div class="filter-search">
+          <input class="input" placeholder="Search resources..." id="resourceSearch" oninput="searchResources(this.value)">
+          <select class="select" id="categoryFilter" onchange="filterByCategory(this.value)">
+            <option value="all">All Categories</option>
+            <option value="AI">🤖 AI & ML</option>
+            <option value="Cloud">☁️ Cloud</option>
+            <option value="Web">🌐 Web</option>
+            <option value="Security">🔐 Security</option>
+            <option value="DevOps">🚀 DevOps</option>
+            <option value="Data">📊 Data</option>
+            <option value="Math">📐 Mathematics</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Resource Grid -->
+      <div class="resource-grid" id="resourceGrid">
+        <!-- Resources will be rendered by JavaScript -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Upload Resource Modal -->
+<div class="resource-modal" id="uploadResourceModal">
+  <div class="modal-overlay" onclick="closeUploadResource()"></div>
+  <div class="modal-content" style="max-width:600px;">
+    <button class="modal-close" onclick="closeUploadResource()">✕</button>
+    <div class="modal-body" style="padding:30px;">
+      <h2 style="font-family:'Poppins',sans-serif; font-size:24px; margin-bottom:20px;">📤 Upload Resource</h2>
+      <form id="uploadResourceForm" onsubmit="publishResource(event)">
+        <div class="form-row">
+          <label class="label">Resource Title *</label>
+          <input class="input" id="resourceTitle" placeholder="e.g., Transformer Paper Annotated" required>
+        </div>
+        <div class="form-row">
+          <label class="label">Type *</label>
+          <select class="select" id="resourceType" required>
+            <option value="">Select Type</option>
+            <option value="pdf">📄 PDF</option>
+            <option value="video">🎥 Video</option>
+            <option value="ppt">📊 PPT</option>
+            <option value="book">📚 Book</option>
+            <option value="link">🔗 Link</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label class="label">Category *</label>
+          <select class="select" id="resourceCategory" required>
+            <option value="">Select Category</option>
+            <option value="AI">🤖 AI & ML</option>
+            <option value="Cloud">☁️ Cloud</option>
+            <option value="Web">🌐 Web</option>
+            <option value="Security">🔐 Security</option>
+            <option value="DevOps">🚀 DevOps</option>
+            <option value="Data">📊 Data</option>
+            <option value="Math">📐 Mathematics</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label class="label">Description</label>
+          <textarea class="textarea" id="resourceDescription" rows="3" placeholder="Describe your resource..."></textarea>
+        </div>
+        <div class="step-grid">
+          <div class="form-row">
+            <label class="label">File Size</label>
+            <input class="input" id="resourceSize" placeholder="e.g., 28 pages or 62 min">
+          </div>
+          <div class="form-row">
+            <label class="label">Downloads / Views</label>
+            <input class="input" id="resourceStats" placeholder="e.g., 4.1k downloads">
+          </div>
+        </div>
+        <div class="form-row">
+          <label class="label">Resource URL</label>
+          <input class="input" id="resourceUrl" placeholder="https://example.com/resource">
+        </div>
+        <div style="display:flex; gap:12px; margin-top:20px;">
+          <button type="submit" class="btn btn-primary" style="flex:1;">📤 Upload Resource</button>
+          <button type="button" class="btn btn-outline" onclick="closeUploadResource()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Resource Detail Modal -->
+<div class="resource-modal" id="resourceDetailModal">
+  <div class="modal-overlay" onclick="closeResourceDetail()"></div>
+  <div class="modal-content" id="detailModalContent" style="max-width:600px;">
+    <button class="modal-close" onclick="closeResourceDetail()">✕</button>
+    <div id="resourceDetailBody">
+      <!-- Dynamic content -->
+    </div>
+  </div>
+</div>
+
+<!-- Toast Container -->
+<div class="toast-container"></div>
+
+<script src="../assets/js/user-db.js"></script>
+<script src="../assets/js/app.js"></script>
+<script src="../assets/js/resources.js"></script>
+</body>
+</html>

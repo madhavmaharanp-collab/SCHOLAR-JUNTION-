@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Events — Scholar Junction</title>
+<link rel="stylesheet" href="../assets/css/global.css">
+<link rel="stylesheet" href="../assets/css/events.css">
+</head>
+<body>
+<div class="app-shell">
+<!-- Sidebar -->
+<aside class="app-sidebar">
+  <div class="sidebar-brand"><div class="sj-logo-box" style="width:38px;height:38px;"><img src="../assets/img/logo.png"></div><b>Scholar Junction</b></div>
+  <nav class="sidebar-nav">
+    <a href="dashboard.html">📊 Dashboard</a>
+    <a href="events.html" class="active">📅 Events</a>
+    <a href="knowledge-hub.html">📚 Knowledge Hub</a>
+    <a href="projects.html">🧪 Projects</a>
+    <a href="ai-assistant.html">🤖 AI Assistant</a>
+    <a href="messages.html">💬 Messages</a>
+    <a href="settings.html">⚙️ Settings</a>
+  </nav>
+</aside>
+
+<div class="app-main">
+  <!-- Top Bar -->
+  <<!-- In the app-topbar section -->
+<div class="app-topbar">
+  <div>
+    <div class="breadcrumb">
+      <a href="../index.html">Home</a> 
+      <span class="sep">/</span> 
+      <a href="dashboard.html">Dashboard</a>
+      <span class="sep">/</span> 
+      <strong>Events</strong>
+    </div>
+  </div>
+  <div class="flex items-center gap-3">
+    <button class="btn btn-primary btn-sm" onclick="openCreateEvent()">＋ Create Event</button>
+    <a href="dashboard.html" class="btn btn-outline btn-sm">← Dashboard</a>
+    <div class="avatar" id="headerAvatar">AS</div>
+  </div>
+</div>
+
+  <div class="app-content">
+    <!-- Header -->
+    <div class="events-header">
+      <div>
+        <h1 class="font-display text-3xl">📅 Event Platform</h1>
+        <p class="text-muted mt-2">Discover, join, and host academic events worldwide</p>
+      </div>
+      <div class="events-stats">
+        <div class="stat-chip"><span>🎯</span> <span id="upcomingCount">0</span> Upcoming</div>
+        <div class="stat-chip"><span>✅</span> <span id="pastCount">0</span> Past</div>
+        <div class="stat-chip"><span>👥</span> <span id="totalParticipants">0</span> Participants</div>
+      </div>
+    </div>
+
+      <!-- Filters -->
+    <div class="events-filters">
+      <div class="filter-group">
+        <span class="chip active" data-filter="upcoming" onclick="filterEvents('upcoming')">🟢 Upcoming</span>
+        <span class="chip" data-filter="past" onclick="filterEvents('past')">🔴 Past</span>
+        <span class="chip" data-filter="my" onclick="filterEvents('my')">📌 My Events</span>
+        <span class="chip" data-filter="all" onclick="filterEvents('all')">📋 All</span>
+      </div>
+      <div class="filter-search">
+        <input class="input" placeholder="Search events..." id="eventSearch" oninput="searchEvents(this.value)">
+        <select class="select" id="eventType" onchange="filterByType(this.value)">
+          <option value="all">All Types</option>
+          <option value="online">Online</option>
+          <option value="in-person">In-Person</option>
+          <option value="hybrid">Hybrid</option>
+        </select>
+          </div>
+        </div>
+
+    <!-- Event Grid -->
+    <div class="event-grid" id="eventGrid">
+      <!-- Events will be rendered by JavaScript -->
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Create Event Modal -->
+<div class="event-modal" id="createEventModal">
+  <div class="modal-overlay" onclick="closeCreateEvent()"></div>
+  <div class="modal-content" style="max-width:600px;">
+    <button class="modal-close" onclick="closeCreateEvent()">✕</button>
+    <div class="modal-body" style="padding:30px;">
+      <h2 style="font-family:'Poppins',sans-serif; font-size:24px; margin-bottom:20px;">📝 Create New Event</h2>
+      <form id="createEventForm" onsubmit="publishEvent(event)">
+        <div class="form-row">
+          <label class="label">Event Title *</label>
+          <input class="input" id="eventTitle" placeholder="e.g., Global AI Research Summit 2026" required>
+        </div>
+        <div class="form-row">
+          <label class="label">Category *</label>
+          <select class="select" id="eventCategory" required>
+            <option value="">Select Category</option>
+            <option value="AI & Machine Learning">🤖 AI & Machine Learning</option>
+            <option value="Cloud Computing">☁️ Cloud Computing</option>
+            <option value="Cybersecurity">🔐 Cybersecurity</option>
+            <option value="Data Science">📊 Data Science</option>
+            <option value="Academic Writing">📝 Academic Writing</option>
+            <option value="Research">🔬 Research</option>
+            <option value="DevOps">🚀 DevOps</option>
+            <option value="Business">💼 Business</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label class="label">Event Type *</label>
+          <select class="select" id="eventTypeSelect" required>
+            <option value="">Select Type</option>
+            <option value="Online">🌐 Online</option>
+            <option value="In-Person">📍 In-Person</option>
+            <option value="Hybrid">🔄 Hybrid</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label class="label">Description *</label>
+          <textarea class="textarea" id="eventDescription" rows="4" placeholder="Describe your event..." required></textarea>
+        </div>
+        <div class="step-grid">
+          <div class="form-row">
+            <label class="label">Date *</label>
+            <input class="input" type="date" id="eventDate" required>
+          </div>
+          <div class="form-row">
+            <label class="label">Time *</label>
+            <input class="input" type="time" id="eventTime" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <label class="label">Location *</label>
+          <input class="input" id="eventLocation" placeholder="e.g., Virtual (Zoom) or Kathmandu, Nepal" required>
+        </div>
+        <div class="step-grid">
+          <div class="form-row">
+            <label class="label">Max Participants</label>
+            <input class="input" type="number" id="eventMax" placeholder="100" value="100">
+          </div>
+          <div class="form-row">
+            <label class="label">Price</label>
+            <input class="input" id="eventPrice" placeholder="Free or $29.99" value="Free">
+          </div>
+        </div>
+        <div class="form-row">
+          <label class="label">Image URL (optional)</label>
+          <input class="input" id="eventImage" placeholder="https://images.unsplash.com/...">
+        </div>
+        <div style="display:flex; gap:12px; margin-top:20px;">
+          <button type="submit" class="btn btn-primary" style="flex:1;">📢 Publish Event</button>
+          <button type="button" class="btn btn-outline" onclick="closeCreateEvent()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Event Detail Modal (for viewing) -->
+<div class="event-modal" id="eventDetailModal">
+  <div class="modal-overlay" onclick="closeEventDetail()"></div>
+  <div class="modal-content" id="detailModalContent">
+    <button class="modal-close" onclick="closeEventDetail()">✕</button>
+    <div id="detailBody">
+      <!-- Dynamic content -->
+    </div>
+  </div>
+</div>
+
+<!-- Toast Container -->
+<div class="toast-container"></div>
+
+<script src="../assets/js/user-db.js"></script>
+<script src="../assets/js/app.js"></script>
+<script src="../assets/js/events.js"></script>
+</body>
+</html>

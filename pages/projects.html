@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Project Showcase — Scholar Junction</title>
+<link rel="stylesheet" href="../assets/css/global.css">
+<link rel="stylesheet" href="../assets/css/projects.css">
+</head>
+<body>
+<header class="sj-header">
+  <div class="container-wide sj-header-inner">
+    <a class="sj-brand" href="../index.html">
+      <div class="sj-logo-box"><img src="../assets/img/logo.png"></div>
+      <span class="sj-brand-text">Scholar Junction</span>
+    </a>
+    <nav class="sj-nav">
+      <a href="dashboard.html">📊 Dashboard</a>
+      <a href="projects.html" class="active">Projects</a>
+      <a href="knowledge-hub.html">Knowledge Hub</a>
+      <a href="collaboration.html">Collaboration</a>
+    </nav>
+    <div class="sj-header-actions">
+      <button class="btn btn-primary btn-sm" onclick="openCreateProject()">＋ Create Project</button>
+      <a href="dashboard.html" class="btn btn-outline btn-sm" style="margin-left:8px;">← Dashboard</a>
+      <div class="avatar" id="headerAvatar">AS</div>
+    </div>
+  </div>
+</header>
+
+<div class="container-wide" style="padding:28px 24px;">
+  <!-- Breadcrumb -->
+  <div class="breadcrumb" style="margin-bottom:16px;">
+    <a href="../index.html">Home</a> 
+    <span class="sep">/</span> 
+    <a href="dashboard.html">Dashboard</a>
+    <span class="sep">/</span> 
+    <strong>Projects</strong>
+  </div>
+
+  <!-- Header -->
+  <div class="projects-header">
+    <div>
+      <h1 class="font-display text-3xl">🚀 Project Showcase</h1>
+      <div class="text-muted text-sm mt-1">GitHub-inspired • <span id="projectCount">0</span> active projects</div>
+    </div>
+    <div class="projects-stats">
+      <div class="stat-chip"><span>⭐</span> <span id="totalStars">0</span> Total Stars</div>
+      <div class="stat-chip"><span>👥</span> <span id="totalTeams">0</span> Teams</div>
+      <div class="stat-chip"><span>📊</span> <span id="totalViews">0</span> Views</div>
+    </div>
+  </div>
+
+  <!-- Filters -->
+  <div class="projects-filters">
+    <div class="filter-group">
+      <span class="chip active" data-filter="all" onclick="filterProjects('all')">📋 All</span>
+      <span class="chip" data-filter="trending" onclick="filterProjects('trending')">🔥 Trending</span>
+      <span class="chip" data-filter="most-starred" onclick="filterProjects('most-starred')">⭐ Most Starred</span>
+      <span class="chip" data-filter="my" onclick="filterProjects('my')">📌 My Projects</span>
+    </div>
+    <div class="filter-search">
+      <input class="input" placeholder="Search projects..." id="projectSearch" oninput="searchProjects(this.value)">
+      <select class="select" id="categoryFilter" onchange="filterByCategory(this.value)">
+        <option value="all">All Categories</option>
+        <option value="AI">🤖 AI & ML</option>
+        <option value="Cloud">☁️ Cloud</option>
+        <option value="Web">🌐 Web</option>
+        <option value="Security">🔐 Security</option>
+        <option value="DevOps">🚀 DevOps</option>
+        <option value="Data">📊 Data</option>
+        <option value="Mobile">📱 Mobile</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Project Grid -->
+  <div class="proj-grid" id="projectGrid">
+    <!-- Projects will be rendered by JavaScript -->
+  </div>
+</div>
+
+<!-- Create Project Modal -->
+<div class="project-modal" id="createProjectModal">
+  <div class="modal-overlay" onclick="closeCreateProject()"></div>
+  <div class="modal-content" style="max-width:600px;">
+    <button class="modal-close" onclick="closeCreateProject()">✕</button>
+    <div class="modal-body" style="padding:30px;">
+      <h2 style="font-family:'Poppins',sans-serif; font-size:24px; margin-bottom:20px;">🚀 Create New Project</h2>
+      <form id="createProjectForm" onsubmit="publishProject(event)">
+        <div class="form-row">
+          <label class="label">Project Name *</label>
+          <input class="input" id="projectName" placeholder="e.g., ScholarGraph" required>
+        </div>
+        <div class="form-row">
+          <label class="label">Category *</label>
+          <select class="select" id="projectCategory" required>
+            <option value="">Select Category</option>
+            <option value="AI">🤖 AI & ML</option>
+            <option value="Cloud">☁️ Cloud</option>
+            <option value="Web">🌐 Web</option>
+            <option value="Security">🔐 Security</option>
+            <option value="DevOps">🚀 DevOps</option>
+            <option value="Data">📊 Data</option>
+            <option value="Mobile">📱 Mobile</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label class="label">Description *</label>
+          <textarea class="textarea" id="projectDescription" rows="3" placeholder="Describe your project..." required></textarea>
+        </div>
+        <div class="form-row">
+          <label class="label">Tech Stack</label>
+          <input class="input" id="projectTech" placeholder="e.g., TypeScript, Python, React">
+        </div>
+        <div class="step-grid">
+          <div class="form-row">
+            <label class="label">GitHub URL</label>
+            <input class="input" id="projectGithub" placeholder="https://github.com/...">
+          </div>
+          <div class="form-row">
+            <label class="label">Demo URL</label>
+            <input class="input" id="projectDemo" placeholder="https://demo.com">
+          </div>
+        </div>
+        <div style="display:flex; gap:12px; margin-top:20px;">
+          <button type="submit" class="btn btn-primary" style="flex:1;">📢 Publish Project</button>
+          <button type="button" class="btn btn-outline" onclick="closeCreateProject()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Project Detail Modal -->
+<div class="project-modal" id="projectDetailModal">
+  <div class="modal-overlay" onclick="closeProjectDetail()"></div>
+  <div class="modal-content" id="detailModalContent" style="max-width:700px;">
+    <button class="modal-close" onclick="closeProjectDetail()">✕</button>
+    <div id="projectDetailBody">
+      <!-- Dynamic content -->
+    </div>
+  </div>
+</div>
+
+<!-- Toast Container -->
+<div class="toast-container"></div>
+
+<script src="../assets/js/user-db.js"></script>
+<script src="../assets/js/app.js"></script>
+<script src="../assets/js/projects.js"></script>
+</body>
+</html>

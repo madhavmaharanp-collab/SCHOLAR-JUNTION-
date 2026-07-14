@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Scholar Junction — Connect. Learn. Collaborate.</title>
+<link rel="icon" href="assets/img/logo.png" />
+<link rel="stylesheet" href="assets/css/global.css" />
+<link rel="stylesheet" href="assets/css/landing.css" />
+</head>
+<body>
+  <!-- Global Header -->
+  <header class="sj-header">
+    <div class="container-wide sj-header-inner">
+      <a class="sj-brand" href="index.html">
+        <div class="sj-logo-box">
+          <img src="assets/img/logo.png" alt="Scholar Junction" onerror="this.parentElement.textContent='Replace with Scholar Junction Logo'">
+        </div>
+        <span class="sj-brand-text">Scholar Junction</span>
+      </a>
+
+      <nav class="sj-nav" aria-label="Primary">
+        <a href="index.html" class="active">Home</a>
+        <a href="./pages/login.html">Community</a>
+        <a href="./pages/login.html">Events</a>
+        <a href="./pages/login.html">Knowledge Hub</a>
+        <a href="./pages/login.html">Projects</a>
+        <a href="./pages/login.html">Resources</a>
+        <a href="./pages/login.html">AI Assistant</a>
+      </nav>
+
+      <div class="sj-header-actions">
+        <!-- <a href="./pages/notifications.html" class="icon-btn hide-sm" title="Notifications" data-toast="3 new notifications">🔔</a>
+        <a href="./pages/messages.html" class="icon-btn hide-sm" title="Messages" data-toast="Messages open in Dashboard">💬</a> -->
+        <a href="./pages/login.html" class="btn btn-ghost hide-sm">Login</a>
+        <a href="./pages/login.html#register" class="btn btn-primary">Join Now</a>
+        <button class="icon-btn burger" data-burger aria-label="Menu">☰</button>
+      </div>
+    </div>
+    <!-- mobile nav -->
+    <div data-mobile-nav style="display:none"></div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container-wide hero-grid">
+      <div>
+        <div class="badge badge-purple mb-3">Premium Academic SaaS • v2.4</div>
+        <h1>Connect.<br>Learn.<br><span class="gradient-text">Collaborate.</span></h1>
+        <p class="lead">Scholar Junction connects students and educators through knowledge sharing, collaboration, AI learning, and academic communities.</p>
+        <div class="hero-ctas">
+          <a href="pages/login.html#register" class="btn btn-primary btn-lg">Join Scholar Junction →</a>
+          <a href="pages/forum.html" class="btn btn-outline btn-lg">Explore Community</a>
+          <a href="#" class="btn btn-ghost" data-toast="Demo video launching soon">▶ Watch Demo</a>
+        </div>
+        <div class="trust-row">
+          <span>⭐ 4.9/5 from 12k+ scholars</span>
+          <span>• SOC2 • GDPR • FERPA ready</span>
+          <span>• Used by 420 universities</span>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-blob">
+          <!-- Illustrated hero SVG -->
+          <svg viewBox="0 0 640 460" class="illustration-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Students + AI + Cloud + Education">
+            <defs>
+              <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#2563EB" stop-opacity=".18"/>
+                <stop offset="100%" stop-color="#7C3AED" stop-opacity=".18"/>
+              </linearGradient>
+              <filter id="blur1"><feGaussianBlur stdDeviation="18"/></filter>
+            </defs>
+            <circle cx="480" cy="110" r="70" fill="url(#g1)"/>
+            <circle cx="160" cy="340" r="60" fill="#22C55E" opacity=".08" />
+            <!-- cloud -->
+            <g transform="translate(370,60)" opacity=".9">
+              <rect x="0" y="30" width="170" height="54" rx="27" fill="#ffffff" stroke="#e2e8f0"/>
+              <circle cx="45" cy="30" r="26" fill="#fff" stroke="#e2e8f0"/>
+              <circle cx="95" cy="18" r="32" fill="#fff" stroke="#e2e8f0"/>
+              <text x="38" y="64" font-family="Inter" font-size="12" fill="#64748b">AI Sync • Live</text>
+            </g>
+            <!-- laptop / students -->
+            <rect x="120" y="160" width="300" height="190" rx="18" fill="#ffffff" stroke="#dbe3ee"/>
+            <rect x="140" y="182" width="260" height="130" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+            <text x="160" y="212" font-family="Poppins" font-size="15" fill="#0f172a" font-weight="600">scholar.junction / learn</text>
+            <rect x="160" y="224" width="180" height="10" rx="5" fill="#e2e8f0"/>
+            <rect x="160" y="242" width="210" height="10" rx="5" fill="#e2e8f0"/>
+            <rect x="160" y="260" width="140" height="10" rx="5" fill="#e2e8f0"/>
+            <rect x="160" y="282" width="96" height="22" rx="11" fill="#2563EB"/>
+            <text x="175" y="297" font-family="Inter" font-size="11" fill="#fff">Collaborate</text>
+            <!-- people avatars -->
+            <circle cx="210" cy="122" r="28" fill="#eef2ff" stroke="#c7d2fe"/>
+            <circle cx="280" cy="112" r="24" fill="#f5f3ff" stroke="#ddd6fe"/>
+            <circle cx="340" cy="128" r="22" fill="#ecfdf5" stroke="#bbf7d0"/>
+            <text x="196" y="128" font-size="13" font-family="Inter" fill="#64748b">👩‍🎓</text>
+            <text x="268" y="118" font-size="12" font-family="Inter">👨‍🏫</text>
+            <text x="330" y="134" font-size="12">👩‍💻</text>
+            <!-- decorative notes -->
+            <rect x="440" y="210" width="140" height="84" rx="14" fill="#ffffff" stroke="#e2e8f0"/>
+            <text x="456" y="236" font-size="12" font-family="Inter" fill="#64748b">AI Summary</text>
+            <rect x="456" y="244" width="100" height="6" rx="3" fill="#e6ecf7"/>
+            <rect x="456" y="256" width="86" height="6" rx="3" fill="#e6ecf7"/>
+            <rect x="456" y="268" width="74" height="6" rx="3" fill="#e6ecf7"/>
+          </svg>
+        </div>
+
+        <!-- glass floating cards -->
+        <div class="glass-panel hero-glass">
+          <div class="text-xs text-muted">Scholar AI</div>
+          <div class="font-600 mt-2">Generate a 12-week study plan for Machine Learning</div>
+          <div class="mt-3 text-sm text-muted">• 3 drafts ready • Cited sources</div>
+        </div>
+
+        <div class="card hero-stat">
+          <div class="text-xs text-muted">Active learners today</div>
+          <div class="text-2xl font-700">14,820+</div>
+          <div class="text-xs" style="color:#22C55E">▲ 12% this week</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- statistics -->
+    <div class="container-wide mt-12">
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-num">187k+</div>
+          <div class="stat-label">Scholars worldwide</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">42k</div>
+          <div class="stat-label">Peer-reviewed articles</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">3,100</div>
+          <div class="stat-label">Active project teams</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">98.7%</div>
+          <div class="stat-label">AI answer accuracy</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGO STRIP -->
+  <section class="section" style="padding-top:36px; padding-bottom:36px;">
+    <div class="container center text-muted text-sm mb-4">Trusted by leading academic communities</div>
+    <div class="container logo-strip">
+      <span>MIT Open •</span>
+      <span>Stanford HAI •</span>
+      <span>Oxford Digital •</span>
+      <span>ETH Zurich •</span>
+      <span>NUS •</span>
+      <span>KAIST</span>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="section section-muted" id="features">
+    <div class="container">
+      <h2 class="section-title">Everything a modern scholar needs</h2>
+      <p class="section-sub">A premium SaaS academic OS inspired by Notion, Linear, GitHub, and Discord – built for deep work.</p>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">📚</div>
+          <h3 class="font-600">Knowledge Hub</h3>
+          <p class="text-muted text-sm mt-2">Medium-inspired publishing with peer review, citations, and version history.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💬</div>
+          <h3 class="font-600">Discussion Forum</h3>
+          <p class="text-muted text-sm mt-2">Discord + Reddit style threads, upvotes, tags, and real-time Q&A.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🤖</div>
+          <h3 class="font-600">Scholar AI</h3>
+          <p class="text-muted text-sm mt-2">Summarize papers, build study plans, explain concepts, career coaching.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🧪</div>
+          <h3 class="font-600">Project Showcase</h3>
+          <p class="text-muted text-sm mt-2">GitHub-inspired portfolios, stars, tech tags, demo + repo links.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📅</div>
+          <h3 class="font-600">Events Platform</h3>
+          <p class="text-muted text-sm mt-2">Calendar, RSVP, livestream links, countdowns, certificates.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🤝</div>
+          <h3 class="font-600">Collaboration Hub</h3>
+          <p class="text-muted text-sm mt-2">Skill-matching, team finder, availability status, and Kanban.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMUNITIES -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Top Communities</h2>
+      <p class="section-sub">Join 1,240+ verified academic circles.</p>
+      <div class="communities-grid">
+        <div class="community-card">
+          <div class="community-icon">AI</div>
+          <div>
+            <div class="font-600">AI & Machine Learning</div>
+            <div class="text-sm text-muted">38.4k members • 129 online</div>
+            <div class="mt-2"><span class="tag">papers</span> <span class="tag">projects</span></div>
+          </div>
+        </div>
+        <div class="community-card">
+          <div class="community-icon">☁️</div>
+          <div>
+            <div class="font-600">Cloud Engineering</div>
+            <div class="text-sm text-muted">21.2k members • 76 online</div>
+            <div class="mt-2"><span class="tag">AWS</span> <span class="tag">k8s</span></div>
+          </div>
+        </div>
+        <div class="community-card">
+          <div class="community-icon">🔐</div>
+          <div>
+            <div class="font-600">Cybersecurity</div>
+            <div class="text-sm text-muted">16.8k members • 54 online</div>
+            <div class="mt-2"><span class="tag">CTF</span> <span class="tag">research</span></div>
+          </div>
+        </div>
+        <div class="community-card">
+          <div class="community-icon">📊</div>
+          <div>
+            <div class="font-600">Data Science Nepal</div>
+            <div class="text-sm text-muted">9.1k members • 41 online</div>
+            <div class="mt-2"><span class="tag">python</span> <span class="tag">R</span></div>
+          </div>
+        </div>
+        <div class="community-card">
+          <div class="community-icon">🧮</div>
+          <div>
+            <div class="font-600">Mathematics & Research</div>
+            <div class="text-sm text-muted">12.5k members</div>
+            <div class="mt-2"><span class="tag">proofs</span> <span class="tag">LaTeX</span></div>
+          </div>
+        </div>
+        <div class="community-card">
+          <div class="community-icon">💼</div>
+          <div>
+            <div class="font-600">Business & Innovation</div>
+            <div class="text-sm text-muted">8.3k members</div>
+            <div class="mt-2"><span class="tag">startups</span> <span class="tag">case</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="center mt-6"><a href="pages/forum.html" class="btn btn-outline">Browse all communities →</a></div>
+    </div>
+  </section>
+
+  <!-- LATEST EVENTS -->
+  <section class="section section-muted">
+    <div class="container">
+      <div class="flex justify-between items-center" style="flex-wrap:wrap; gap:12px;">
+        <div>
+          <h2 class="section-title" style="text-align:left">Latest Events</h2>
+          <p class="text-muted" style="margin-top:6px">Join live workshops, defenses & hackathons</p>
+        </div>
+        <a href="pages/events.html" class="btn btn-outline btn-sm">Calendar view</a>
+      </div>
+      <div class="cards-3 mt-6">
+        <div class="event-card">
+          <div class="thumb">Banner • AI Research Summit</div>
+          <div class="card-body">
+            <div class="badge badge-purple">July 24 • Online</div>
+            <div class="font-600 mt-2">Global AI Research Summit 2026</div>
+            <div class="text-sm text-muted mt-2">1,482 attending • 3 days • Certificates</div>
+            <div class="mt-3"><a class="btn btn-primary btn-sm" href="pages/events.html">Join</a></div>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="thumb">Banner • Cloud Study Jam</div>
+          <div class="card-body">
+            <div class="badge badge-green">July 14 • Kathmandu</div>
+            <div class="font-600 mt-2">Cloud Native Study Jam</div>
+            <div class="text-sm text-muted mt-2">244 attending • Hands-on labs</div>
+            <div class="mt-3"><a class="btn btn-primary btn-sm" href="pages/events.html">RSVP</a></div>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="thumb">Banner • Paper Workshop</div>
+          <div class="card-body">
+            <div class="badge badge-gray">July 18 • Hybrid</div>
+            <div class="font-600 mt-2">Publish your first IEEE paper</div>
+            <div class="text-sm text-muted mt-2">97 attending • Review clinic</div>
+            <div class="mt-3"><a class="btn btn-primary btn-sm" href="pages/events.html">Save seat</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRENDING ARTICLES -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Trending in Knowledge Hub</h2>
+      <p class="section-sub">Peer-reviewed and community curated.</p>
+      <div class="cards-3 mt-6">
+        <div class="article-card">
+          <div class="thumb">Cover • Transformers</div>
+          <div class="card-body">
+            <div class="text-xs text-muted">AI • 9 min</div>
+            <div class="font-600 mt-2">RAG Architectures that actually scale in 2026</div>
+            <div class="text-sm text-muted mt-2">by Dr. A. Sharma • 4.2k reads</div>
+          </div>
+        </div>
+        <div class="article-card">
+          <div class="thumb">Cover • Kubernetes</div>
+          <div class="card-body">
+            <div class="text-xs text-muted">Cloud • 7 min</div>
+            <div class="font-600 mt-2">FinOps on EKS: cutting 38% cost with Karpenter</div>
+            <div class="text-sm text-muted mt-2">by N. Rana • 2.9k reads</div>
+          </div>
+        </div>
+        <div class="article-card">
+          <div class="thumb">Cover • Research</div>
+          <div class="card-body">
+            <div class="text-xs text-muted">Mathematics • 11 min</div>
+            <div class="font-600 mt-2">A friendly intro to Topological Data Analysis</div>
+            <div class="text-sm text-muted mt-2">by Prof. Karki • trending</div>
+          </div>
+        </div>
+      </div>
+      <div class="center mt-6"><a href="pages/knowledge-hub.html" class="btn btn-outline">Open Knowledge Hub</a></div>
+    </div>
+  </section>
+
+  <!-- FEATURED PROJECTS -->
+  <section class="section section-muted">
+    <div class="container">
+      <h2 class="section-title">Featured Projects</h2>
+      <p class="section-sub">GitHub-inspired showcase from the Scholar Junction network.</p>
+      <div class="cards-3 mt-6">
+        <div class="project-card">
+          <div class="thumb">ScholarGraph • Graph RAG</div>
+          <div class="card-body">
+            <div class="font-600">ScholarGraph</div>
+            <div class="text-sm text-muted mt-2">Open-source academic knowledge graph + hybrid search.</div>
+            <div class="mt-3 text-xs text-muted">TypeScript • Python • ⭐ 1.4k • 320 views/wk</div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="thumb">NepalEdu Cloud</div>
+          <div class="card-body">
+            <div class="font-600">NepalEdu Cloud</div>
+            <div class="text-sm text-muted mt-2">Serverless LMS for rural colleges. Offline-first PWA.</div>
+            <div class="mt-3 text-xs text-muted">Next.js • SST • ⭐ 642</div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="thumb">ProofPilot</div>
+          <div class="card-body">
+            <div class="font-600">ProofPilot</div>
+            <div class="text-sm text-muted mt-2">AI co-pilot that checks LaTeX proofs, step-by-step.</div>
+            <div class="mt-3 text-xs text-muted">Rust • LLM • ⭐ 889</div>
+          </div>
+        </div>
+      </div>
+      <div class="center mt-6"><a href="pages/projects.html" class="btn btn-outline">View project showcase</a></div>
+    </div>
+  </section>
+
+  <!-- AI ASSISTANT PREVIEW -->
+  <section class="section">
+    <div class="container ai-preview">
+      <div>
+        <div class="badge">Scholar AI Assistant</div>
+        <h2 class="section-title" style="text-align:left; margin-top:10px;">Your ChatGPT-level study co-pilot</h2>
+        <p class="text-muted mt-3">Summarize papers, generate study plans, explain concepts with citations, suggest project ideas, and get career advice – all inside Scholar Junction.</p>
+        <ul class="mt-4 text-sm" style="line-height:2; color:#334155;">
+          <li>• Summarize • Study Plan • Career Advice</li>
+          <li>• Explain Concepts • Project Ideas • Citations</li>
+          <li>• Templates • Recent Chats • Regenerate</li>
+        </ul>
+        <div class="mt-6">
+          <a href="pages/ai-assistant.html" class="btn btn-primary">Try Scholar AI</a>
+          <a href="pages/ai-assistant.html" class="btn btn-ghost">See templates</a>
+        </div>
+      </div>
+      <div class="ai-chatmock">
+        <div class="msg msg-user">Can you summarize: “Attention Is All You Need” into 5 bullet points with APA citation?</div>
+        <div class="msg msg-ai">Absolutely. Here’s a concise Scholar-style summary:<br><br>1. Introduces Transformer, removing recurrence…<br>2. Multi-head self-attention enables parallelization…<br><br><span class="text-xs text-muted">Vaswani et al., 2017 • NeurIPS</span></div>
+        <div class="msg msg-user">Now build a 6-week study plan for me, Bachelor CS, Sem 5.</div>
+        <div class="msg msg-ai">Week 1–2 Foundations… Week 3–4 Attention maths… Export to calendar? <span class="kbd">⌘⏎</span></div>
+        <div class="mt-3 text-xs text-muted">Buttons: New Chat • Clear • Copy • Regenerate</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section section-muted">
+    <div class="container">
+      <h2 class="section-title">Loved by scholars in 94 countries</h2>
+      <div class="testimonial-grid">
+        <div class="testimonial">
+          <div>⭐⭐⭐⭐⭐</div>
+          <p class="mt-3 text-sm">“It’s like LinkedIn + Notion + GitHub for academia. Our research lab ships twice as fast.”</p>
+          <div class="mt-3 text-sm font-600">— Anusha B., MSc AI, TU Munich</div>
+        </div>
+        <div class="testimonial">
+          <div>⭐⭐⭐⭐⭐</div>
+          <p class="mt-3 text-sm">“Scholar AI explained distributed consensus better than my professor. With citations.”</p>
+          <div class="mt-3 text-sm font-600">— Bibek S., Bachelor CS, Pulchowk</div>
+        </div>
+        <div class="testimonial">
+          <div>⭐⭐⭐⭐⭐</div>
+          <p class="mt-3 text-sm">“We recruited 3 thesis collaborators in 48 hours through Collaboration Hub.”</p>
+          <div class="mt-3 text-sm font-600">— Dr. Maya R., Lecturer</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">FAQ</h2>
+      <div class="faq-grid">
+        <div class="faq-item"><div class="faq-q">Is Scholar Junction free?</div><div class="faq-a">Yes for students. Pro ($7/mo) unlocks unlimited Scholar AI, private projects, and analytics.</div></div>
+        <div class="faq-item"><div class="faq-q">Can I publish research?</div><div class="faq-a">Yes. Knowledge Hub supports DOI-ready articles, peer review, and export to PDF/LaTeX.</div></div>
+        <div class="faq-item"><div class="faq-q">Is my university data secure?</div><div class="faq-a">SOC2, GDPR, and FERPA compliant. End-to-end encrypted messages and SSO.</div></div>
+        <div class="faq-item"><div class="faq-q">Does AI plagiarize?</div><div class="faq-a">Scholar AI cites sources, shows provenance, and includes a built-in plagiarism check.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" style="padding-top:20px;">
+    <div class="container">
+      <div class="cta-band">
+        <div>
+          <h3>Build your academic legacy.</h3>
+          <p style="opacity:.92; margin-top:6px">Join 187,000+ scholars on Scholar Junction today.</p>
+        </div>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <a href="pages/login.html#register" class="btn" style="background:white; color:#1d4ed8;">Create free account</a>
+          <a href="pages/dashboard.html" class="btn btn-outline" style="border-color:rgba(255,255,255,.5); color:white;">View demo dashboard</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="sj-footer">
+    <div class="container-wide sj-footer-inner footer-grid">
+      <div>
+        <div class="sj-brand" style="margin-bottom:10px;">
+          <div class="sj-logo-box"><img src="assets/img/logo.png" alt="SJ"></div>
+          <span class="font-600">Scholar Junction</span>
+        </div>
+        <p class="text-sm text-muted">Modern Academic Community Platform.<br>Connect. Learn. Collaborate.</p>
+        <p class="text-xs text-muted mt-3">Kathmandu, Nepal • hello@scholarjunction.app</p>
+      </div>
+      <div class="footer-col"><h4>Product</h4>
+        <a href="pages/knowledge-hub.html">Knowledge Hub</a>
+        <a href="pages/projects.html">Projects</a>
+        <a href="pages/ai-assistant.html">AI Assistant</a>
+        <a href="pages/events.html">Events</a>
+      </div>
+      <div class="footer-col"><h4>Community</h4>
+        <a href="pages/forum.html">Forum</a>
+        <a href="pages/collaboration.html">Collaboration</a>
+        <a href="pages/resources.html">Resources</a>
+        <a href="pages/about.html">About Us</a>
+      </div>
+      <div class="footer-col"><h4>Account</h4>
+        <a href="pages/login.html">Login</a>
+        <a href="pages/profile-setup.html">Onboarding</a>
+        <a href="pages/dashboard.html">Dashboard</a>
+        <a href="pages/settings.html">Settings</a>
+      </div>
+      <div class="footer-col"><h4>Legal</h4>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Security</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom container-wide">
+      <span>© 2026 Scholar Junction. All rights reserved.</span>
+      <span>Made with ♥ for scholars • v2.4.1</span>
+    </div>
+  </footer>
+
+<script src="assets/js/app.js"></script>
+<script src="assets/js/landing.js"></script>
+</body>
+</html>

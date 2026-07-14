@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>User Profile — Scholar Junction</title>
+<link rel="stylesheet" href="../assets/css/global.css">
+<link rel="stylesheet" href="../assets/css/profile.css">
+
+</head>
+<body>
+<header class="sj-header">
+  <div class="container-wide sj-header-inner">
+    <a class="sj-brand" href="../index.html"><div class="sj-logo-box"><img src="../assets/img/logo.png" alt=""></div><span class="sj-brand-text">Scholar Junction</span></a>
+    <nav class="sj-nav">
+      <a href="../index.html">Home</a>
+      <a href="knowledge-hub.html">Knowledge Hub</a>
+      <a href="events.html">Events</a>
+      <a href="projects.html">Projects</a>
+      <a href="ai-assistant.html">AI Assistant</a>
+    </nav>
+    <div class="sj-header-actions">
+      <button class="icon-btn">🔔</button>
+      <button class="icon-btn">💬</button>
+      <div class="avatar" id="headerAvatar">AS</div>
+    </div>
+  </div>
+</header>
+
+<div class="cover"></div>
+<div class="profile-head">
+  <!-- Avatar with upload option -->
+  <div class="avatar-wrapper">
+    <div class="avatar-xl" id="profileAvatar">
+      <img id="profileAvatarImage" style="display:none; width:100%; height:100%; border-radius:28px; object-fit:cover;">
+      <span id="profileAvatarInitial">AS</span>
+    </div>
+    <button class="avatar-upload-btn" id="avatarUploadBtn" title="Change profile photo">📷</button>
+    <input type="file" id="avatarInput" accept="image/jpeg,image/png,image/gif,image/webp" style="display:none;">
+  </div>
+  
+  <div class="profile-actions">
+    <button class="btn btn-outline btn-sm">Message</button>
+    <button class="btn btn-outline btn-sm">Follow</button>
+    <a href="profile-setup.html" class="btn btn-primary btn-sm">Edit Profile</a>
+  </div>
+  
+  <div style="padding-top:78px; padding-bottom:16px;">
+    <h1 class="font-display text-3xl" id="profileName">Aarav Sharma</h1>
+    <div class="text-muted mt-2" id="profileTitle">BSc Computer Science • IOE Pulchowk • Kathmandu, Nepal</div>
+    <div class="mt-2 text-sm" id="profileStats">AI Research • Cloud Native • Open-source • 1,248 followers • 342 following</div>
+    <div class="mt-3" style="display:flex; gap:8px; flex-wrap:wrap;" id="profileTags">
+      <span class="tag">Python</span><span class="tag">TypeScript</span><span class="tag">PyTorch</span><span class="tag">Kubernetes</span><span class="tag">RAG</span>
+    </div>
+    <div class="mt-3" id="verificationBadge"></div>
+  </div>
+</div>
+
+<div class="tabs-row">
+  <div class="tabs-inner" data-tabs>
+    <button data-tab="about" class="active">About</button>
+    <button data-tab="posts">Posts</button>
+    <button data-tab="articles">Articles</button>
+    <button data-tab="projects">Projects</button>
+    <button data-tab="events">Events</button>
+    <button data-tab="certificates">Certificates</button>
+    <button data-tab="achievements">Achievements</button>
+  </div>
+</div>
+
+<div class="profile-body">
+  <div>
+    <div data-tab-panel="about">
+      <div class="card mb-4">
+        <div class="font-600 mb-2">About</div>
+        <p class="text-sm" id="profileBio">CS student building AI tools for education. Maintainer of ScholarGraph (1.4k⭐). IEEE student member. Speaking at AI Research Summit 2026. Open to research collaborations in RAG & evaluation.</p>
+      </div>
+      <div class="card mb-4">
+        <div class="font-600 mb-2">Activity Timeline</div>
+        <div class="text-sm" style="line-height:2;" id="profileActivity">
+          • Published "Vector DB shootout 2026" — 2d ago<br>
+          • Joined Cloud Native Study Jam — 4d ago<br>
+          • Starred ProofPilot — 1w ago<br>
+          • Mentored 3 juniors in Collaboration Hub
+        </div>
+      </div>
+      <div class="card">
+        <div class="font-600 mb-2">Featured Articles</div>
+        <div class="text-sm" id="profileArticles">RAG Architectures that actually scale • FinOps EKS guide • TDA intro</div>
+      </div>
+    </div>
+    <div data-tab-panel="posts" hidden><div class="card">Posts feed — LinkedIn-style scholar posts with images, polls, and citations.</div></div>
+    <div data-tab-panel="articles" hidden><div class="card">12 published articles • 42k total reads • h-index 4 (Scholar Junction)</div></div>
+    <div data-tab-panel="projects" hidden><div class="card">ScholarGraph • NepalEdu Cloud • ProofPilot contributor</div></div>
+    <div data-tab-panel="events" hidden><div class="card">Hosted 6 • Attended 34 • Next: AI Research Summit</div></div>
+    <div data-tab-panel="certificates" hidden><div class="card">AWS SAA • TensorFlow Dev • IEEE Paper Authorship</div></div>
+    <div data-tab-panel="achievements" hidden><div class="card">Top 1% Contributor 2026 • 100-day writing streak • Community Mentor</div></div>
+  </div>
+
+  <aside style="display:grid; gap:16px; align-content:start;">
+    <div class="card">
+      <div class="font-600 mb-2">Skills</div>
+      <div style="display:flex; flex-wrap:wrap; gap:8px;" class="text-sm" id="profileSkills">
+        <span class="tag">ML</span><span class="tag">NLP</span><span class="tag">MLOps</span><span class="tag">Next.js</span><span class="tag">Go</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="font-600 mb-2">Interests</div>
+      <div style="display:flex; flex-wrap:wrap; gap:8px;" class="text-sm" id="profileInterests">
+        <span class="tag">AI</span><span class="tag">Cloud</span><span class="tag">Cybersecurity</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="font-600 mb-2">Achievements</div>
+      <div class="text-sm text-muted" id="profileAchievements">🏆 Scholar of the Month • 🥇 HackNepal Winner • 📝 12 peer-reviewed</div>
+    </div>
+    <div class="card">
+      <div class="font-600 mb-2">Contact</div>
+      <div class="text-sm text-muted" style="line-height:1.9;" id="profileContact">
+        aarav@scholarjunction.app<br>
+        linkedin.com/in/aarav<br>
+        github.com/aarav-sh
+      </div>
+    </div>
+    <div class="card">
+      <div class="font-600 mb-2">Academic Details</div>
+      <div class="text-sm text-muted" id="profileAcademic">
+        Education: Bachelor<br>
+        University: IOE Pulchowk<br>
+        Semester: 5th
+      </div>
+    </div>
+  </aside>
+</div>
+
+<footer class="sj-footer">
+  <div class="footer-bottom container-wide"><span>© 2026 Scholar Junction</span><span><a href="dashboard.html">Dashboard</a></span></div>
+</footer>
+
+<script src="../assets/js/user-db.js"></script>
+<script src="../assets/js/app.js"></script>
+<script src="../assets/js/profile.js"></script>
+</body>
+</html>

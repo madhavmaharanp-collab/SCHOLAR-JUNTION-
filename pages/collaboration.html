@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Collaboration Hub — Scholar Junction</title>
+<link rel="stylesheet" href="../assets/css/global.css">
+<link rel="stylesheet" href="../assets/css/collaboration.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="app-sidebar">
+    <div class="sidebar-brand">
+      <div class="sj-logo-box" style="width:38px;height:38px"><img src="../assets/img/logo.png"></div>
+      <b>Scholar Junction</b>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html">📊 Dashboard</a>
+      <a href="collaboration.html" class="active">🤝 Collaboration</a>
+      <a href="projects.html">🧪 Projects</a>
+      <a href="resources.html">📂 Resources</a>
+      <a href="messages.html">💬 Messages</a>
+    </nav>
+  </aside>
+
+  <div class="app-main">
+    <div class="app-topbar">
+      <div class="breadcrumb">
+        <a href="../index.html">Home</a> 
+        <span class="sep">/</span> 
+        <a href="dashboard.html">Dashboard</a>
+        <span class="sep">/</span> 
+        <strong>Collaboration Hub</strong>
+      </div>
+      <div class="flex items-center gap-3">
+        <button class="btn btn-primary btn-sm" onclick="openCreateOpportunity()">＋ Post Opportunity</button>
+        <a href="dashboard.html" class="btn btn-outline btn-sm">← Dashboard</a>
+        <div class="avatar" id="headerAvatar">AS</div>
+      </div>
+    </div>
+
+    <div class="app-content">
+      <!-- Header -->
+      <div class="collab-header">
+        <div>
+          <h1 class="font-display text-3xl">🤝 Collaboration Hub</h1>
+          <div class="text-muted text-sm mt-1"><span id="opportunityCount">0</span> opportunities • Skill matching enabled</div>
+        </div>
+        <div class="collab-stats">
+          <div class="stat-chip"><span>👥</span> <span id="totalMembers">0</span> Members</div>
+          <div class="stat-chip"><span>🎯</span> <span id="totalMatches">0</span> Matches</div>
+          <div class="stat-chip"><span>✅</span> <span id="totalApplications">0</span> Applications</div>
+        </div>
+      </div>
+
+      <!-- Filters -->
+      <div class="collab-filters">
+        <div class="filter-group">
+          <span class="chip active" data-filter="all" onclick="filterOpportunities('all')">📋 All</span>
+          <span class="chip" data-filter="hiring" onclick="filterOpportunities('hiring')">💼 Hiring</span>
+          <span class="chip" data-filter="research" onclick="filterOpportunities('research')">🔬 Research</span>
+          <span class="chip" data-filter="internship" onclick="filterOpportunities('internship')">🎓 Internship</span>
+          <span class="chip" data-filter="my" onclick="filterOpportunities('my')">📌 My Posts</span>
+        </div>
+        <div class="filter-search">
+          <input class="input" placeholder="Search opportunities..." id="oppSearch" oninput="searchOpportunities(this.value)">
+          <select class="select" id="skillFilter" onchange="filterBySkill(this.value)">
+            <option value="all">All Skills</option>
+            <option value="React">⚛️ React</option>
+            <option value="Python">🐍 Python</option>
+            <option value="ML">🤖 ML</option>
+            <option value="Cloud">☁️ Cloud</option>
+            <option value="UI/UX">🎨 UI/UX</option>
+            <option value="DevOps">🚀 DevOps</option>
+            <option value="Security">🔐 Security</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Opportunities Grid -->
+      <div class="opportunity-grid" id="opportunityGrid">
+        <!-- Opportunities will be rendered by JavaScript -->
+      </div>
+
+      <!-- Team Members Section -->
+      <div class="team-members-section">
+        <h2 class="font-display text-xl mb-4">👥 Recommended Team Members</h2>
+        <div class="members-grid" id="membersGrid">
+          <!-- Members will be rendered by JavaScript -->
+        </div>
+      </div>
+
+      <!-- Skill Match Card -->
+      <div class="skill-match-card">
+        <div class="card">
+          <div class="flex justify-between items-center">
+            <div>
+              <div class="font-600 text-lg">🎯 Skill Match</div>
+              <div class="text-sm text-muted mt-1">Find the perfect teammate based on skills</div>
+            </div>
+            <span class="badge badge-green" id="matchPercentage">94% Match</span>
+          </div>
+          <div class="mt-4" id="skillMatchList">
+            <!-- Will be populated by JavaScript -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Create Opportunity Modal -->
+<div class="collab-modal" id="createOpportunityModal">
+  <div class="modal-overlay" onclick="closeCreateOpportunity()"></div>
+  <div class="modal-content" style="max-width:600px;">
+    <button class="modal-close" onclick="closeCreateOpportunity()">✕</button>
+    <div class="modal-body" style="padding:30px;">
+      <h2 style="font-family:'Poppins',sans-serif; font-size:24px; margin-bottom:20px;">📢 Post Opportunity</h2>
+      <form id="createOppForm" onsubmit="publishOpportunity(event)">
+        <div class="form-row">
+          <label class="label">Title *</label>
+          <input class="input" id="oppTitle" placeholder="e.g., Need Frontend Developer" required>
+        </div>
+        <div class="form-row">
+          <label class="label">Type *</label>
+          <select class="select" id="oppType" required>
+            <option value="">Select Type</option>
+            <option value="hiring">💼 Hiring</option>
+            <option value="research">🔬 Research</option>
+            <option value="internship">🎓 Internship</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label class="label">Description *</label>
+          <textarea class="textarea" id="oppDescription" rows="3" placeholder="Describe the opportunity..." required></textarea>
+        </div>
+        <div class="form-row">
+          <label class="label">Required Skills (comma separated)</label>
+          <input class="input" id="oppSkills" placeholder="e.g., React, TypeScript, Next.js">
+        </div>
+        <div class="step-grid">
+          <div class="form-row">
+            <label class="label">Project / Team</label>
+            <input class="input" id="oppProject" placeholder="e.g., ScholarGraph">
+          </div>
+          <div class="form-row">
+            <label class="label">Location</label>
+            <input class="input" id="oppLocation" placeholder="e.g., Remote / Kathmandu">
+          </div>
+        </div>
+        <div style="display:flex; gap:12px; margin-top:20px;">
+          <button type="submit" class="btn btn-primary" style="flex:1;">📢 Post Opportunity</button>
+          <button type="button" class="btn btn-outline" onclick="closeCreateOpportunity()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Opportunity Detail Modal -->
+<div class="collab-modal" id="opportunityDetailModal">
+  <div class="modal-overlay" onclick="closeOpportunityDetail()"></div>
+  <div class="modal-content" id="detailModalContent" style="max-width:600px;">
+    <button class="modal-close" onclick="closeOpportunityDetail()">✕</button>
+    <div id="opportunityDetailBody">
+      <!-- Dynamic content -->
+    </div>
+  </div>
+</div>
+
+<!-- Toast Container -->
+<div class="toast-container"></div>
+
+<script src="../assets/js/user-db.js"></script>
+<script src="../assets/js/app.js"></script>
+<script src="../assets/js/collaboration.js"></script>
+</body>
+</html>

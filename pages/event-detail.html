@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Event Details — Scholar Junction</title>
+<link rel="stylesheet" href="../assets/css/global.css">
+<style>
+  body { background: #f8fafc; }
+  .detail-container { max-width: 900px; margin: 40px auto; padding: 0 24px; }
+  .detail-card { background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.08); }
+  .detail-image { width: 100%; height: 400px; object-fit: cover; }
+  .detail-body { padding: 40px; }
+  .back-link { display: inline-flex; align-items: center; gap: 8px; color: #2563EB; text-decoration: none; margin-bottom: 20px; font-weight: 500; }
+  .back-link:hover { text-decoration: underline; }
+  .detail-badge { display: inline-block; padding: 4px 14px; border-radius: 999px; font-size: 12px; font-weight: 600; margin-bottom: 12px; }
+  .detail-badge.upcoming { background: #ecfdf5; color: #059669; }
+  .detail-badge.past { background: #fef2f2; color: #dc2626; }
+  .detail-title { font-size: 32px; font-weight: 700; font-family: 'Poppins', sans-serif; color: #0f172a; margin: 0 0 8px; }
+  .detail-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0; padding: 16px; background: #f8fafc; border-radius: 12px; }
+  .detail-meta .item { display: flex; align-items: center; gap: 8px; font-size: 14px; color: #475569; }
+  .detail-description { font-size: 16px; line-height: 1.8; color: #334155; margin: 20px 0; }
+  .detail-actions { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+  .detail-actions .btn { flex: 1; min-width: 140px; }
+  .loading { text-align: center; padding: 60px; color: #94a3b8; }
+  @media (max-width: 768px) {
+    .detail-image { height: 250px; }
+    .detail-body { padding: 24px; }
+    .detail-title { font-size: 24px; }
+    .detail-meta { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="detail-container">
+  <a href="events.html" class="back-link">← Back to Events</a>
+  
+  <div class="detail-card" id="detailCard">
+    <div id="detailContent" class="loading">Loading event details...</div>
+  </div>
+</div>
+
+<script src="../assets/js/user-db.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Get event from localStorage
+  const eventData = localStorage.getItem('viewingEvent');
+  
+  if (!eventData) {
+    document.getElementById('detailContent').innerHTML = `
+      <div style="text-align:center; padding:60px;">
+        <span style="font-size:48px;display:block;margin-bottom:16px;">❌</span>
+        <h3>No event found</h3>
+        <p style="color:#94a3b8;">Please select an event from the events page.</p>
+        <a href="events.html" class="btn btn-primary" style="margin-top:16px;">Go to Events</a>
+      </div>
+    `;
+    return;
+  }
+
+  const event = JSON.parse(eventData);
+  renderEventDetail(event);
+});
+
+function renderEventDetail(event) {
+  const isUpcoming = event.status === 'upcoming';
+  const dateObj = new Date(event.date);
+  const dateStr = dateObj.toLocaleDateString('en-US', { 
+    weekday: 'long', 
+    month: 'long', 
+    day: 'numeric', 
+    year: 'numeric' 
+  });
+
+  const container = document.getElementById('detailContent');
+  
+  container.innerHTML = `
+    <img src="${event.image}" alt="${event.title}" class="detail-image" onerror="this.src='https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=900&h=400&fit=crop'">
+    <div class="detail-body">
+      <span class="detail-badge ${event.status}">${isUpcoming ? '🟢 Upcoming' : '🔴 Past'}</span>
+      <h1 class="detail-title">${event.title}</h1>
+      
+      <div class="detail-meta">
+        <div class="item"><span>📅</span> ${dateStr}</div>
+        <div class="item"><span>⏱️</span> ${event.time}</div>
+        <div class="item"><span>📍</span> ${event.location}</div>
+        <div class="item"><span>👥</span> ${event.participants} / ${event.maxParticipants} participants</div>
+        <div class="item"><span>🏷️</span> ${event.type}</div>
+        <div class="item"><span>💰</span> ${event.price}</div>
+        <div class="item"><span>📂</span> ${event.category}</div>
+        <div class="item"><span>📅</span> Created: ${new Date(event.createdAt).toLocaleDateString()}</div>
+      </div>
+
+      <div class="detail-description">${event.description}</div>
+
+      ${event.speakers && event.speakers.length > 0 ? `
+        <div style="margin: 16px 0;">
+          <h4 style="font-weight:600; margin-bottom:8px;">🎤 Speakers</h4>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            ${event.speakers.map(s => `<span class="tag">${s}</span>`).join('')}
+          </div>
+        </div>
+      ` : ''}
+
+      ${event.agenda && event.agenda.length > 0 ? `
+        <div style="margin: 16px 0;">
+          <h4 style="font-weight:600; margin-bottom:8px;">📋 Agenda</h4>
+          <ul style="list-style:none; padding:0; margin:0;">
+            ${event.agenda.map(item => `<li style="padding:6px 0; color:#475569; font-size:14px; border-bottom:1px solid #f1f5f9;">• ${item}</li>`).join('')}
+          </ul>
+        </div>
+      ` : ''}
+
+      ${!isUpcoming ? `
+        <div style="background:#fef2f2; padding:12px 16px; border-radius:12px; margin:16px 0; border-left:4px solid #EF4444;">
+          <span style="font-weight:600; color:#dc2626;">🔴 This event has passed</span>
+          <p style="margin:4px 0 0; font-size:14px; color:#64748b;">Check back for future events or view the recording.</p>
+        </div>
+      ` : ''}
+
+      <div class="detail-actions">
+        ${isUpcoming ? `
+          <button class="btn btn-primary" onclick="handleRSVP(${event.id})">🎯 Join Event</button>
+          <button class="btn btn-outline" onclick="addToCalendar('${event.title}', '${event.date}')">📆 Add to Calendar</button>
+        ` : `
+          <button class="btn btn-outline" onclick="showToast('📹 Recording coming soon', 'info')">📹 View Recording</button>
+        `}
+        <button class="btn btn-outline" onclick="window.location.href='events.html'">← Back</button>
+        ${event.createdBy === getCurrentUserId() ? `<button class="btn btn-danger" onclick="deleteEvent(${event.id})">🗑️ Delete</button>` : ''}
+      </div>
+    </div>
+  `;
+}
+
+function getCurrentUserId() {
+  if (typeof UserDB !== 'undefined') {
+    const user = UserDB.getCurrentUser();
+    return user ? user.id : null;
+  }
+  return null;
+}
+
+function handleRSVP(eventId) {
+  // Find event in the main events array
+  const events = JSON.parse(localStorage.getItem('sj_events') || '[]');
+  const event = events.find(e => e.id === eventId);
+  
+  if (!event) {
+    showToast('Event not found', 'error');
+    return;
+  }
+
+  const user = getCurrentUserId();
+  if (!user) {
+    showToast('Please login to join events', 'warning');
+    return;
+  }
+
+  if (event.registeredUsers && event.registeredUsers.includes(user)) {
+    showToast('You are already registered ✅', 'info');
+    return;
+  }
+
+  if (event.participants >= event.maxParticipants) {
+    showToast('⚠️ Event is full!', 'warning');
+    return;
+  }
+
+  if (!event.registeredUsers) event.registeredUsers = [];
+  event.registeredUsers.push(user);
+  event.participants += 1;
+  
+  localStorage.setItem('sj_events', JSON.stringify(events));
+  showToast('✅ Successfully registered!', 'success');
+  
+  // Reload page to show updated status
+  setTimeout(() => location.reload(), 1500);
+}
+
+function addToCalendar(title, date) {
+  const dateObj = new Date(date);
+  const formattedDate = dateObj.toISOString().replace(/[-:]/g, '').split('.')[0];
+  const endDate = new Date(dateObj);
+  endDate.setHours(endDate.getHours() + 2);
+  const formattedEnd = endDate.toISOString().replace(/[-:]/g, '').split('.')[0];
+  
+  const url = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${formattedDate}/${formattedEnd}`;
+  window.open(url, '_blank');
+  showToast('📆 Opening calendar...', 'info');
+}
+
+function deleteEvent(eventId) {
+  if (!confirm('Are you sure you want to delete this event?')) return;
+  
+  let events = JSON.parse(localStorage.getItem('sj_events') || '[]');
+  events = events.filter(e => e.id !== eventId);
+  localStorage.setItem('sj_events', JSON.stringify(events));
+  
+  showToast('🗑️ Event deleted', 'info');
+  setTimeout(() => {
+    window.location.href = 'events.html';
+  }, 1000);
+}
+
+function showToast(message, type = 'info') {
+  // Simple toast for detail page
+  const existing = document.querySelector('.detail-toast');
+  if (existing) existing.remove();
+  
+  const toast = document.createElement('div');
+  toast.className = 'detail-toast';
+  toast.style.cssText = `
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #1e293b;
+    color: white;
+    padding: 14px 20px;
+    border-radius: 12px;
+    font-size: 14px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+    z-index: 10000;
+    border-left: 4px solid ${type === 'success' ? '#22C55E' : type === 'error' ? '#EF4444' : '#2563EB'};
+    animation: slideIn 0.3s ease;
+  `;
+  toast.textContent = message;
+  document.body.appendChild(toast);
+  
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateX(80px)';
+    toast.style.transition = 'all 0.3s ease';
+    setTimeout(() => toast.remove(), 300);
+  }, 3000);
+}
+
+// Add animation style
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes slideIn {
+    from { transform: translateX(120px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+`;
+document.head.appendChild(style);
+</script>
+</body>
+</html>

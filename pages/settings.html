@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Settings — Scholar Junction</title>
+<link rel="stylesheet" href="../assets/css/global.css">
+<link rel="stylesheet" href="../assets/css/settings.css">
+</head>
+<body>
+<header class="sj-header">
+  <div class="container-wide sj-header-inner">
+    <a class="sj-brand" href="../index.html">
+      <div class="sj-logo-box"><img src="../assets/img/logo.png"></div>
+      <span class="sj-brand-text">Scholar Junction</span>
+    </a>
+    <nav class="sj-nav">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="settings.html" class="active">Settings</a>
+    </nav>
+    <div class="sj-header-actions">
+      <a href="dashboard.html" class="btn btn-ghost btn-sm">← Dashboard</a>
+      <div class="avatar" id="headerAvatar">AS</div>
+    </div>
+  </div>
+</header>
+
+<div class="settings-shell">
+  <!-- Sidebar -->
+  <aside class="settings-sidebar">
+    <div class="card" style="align-self:start;">
+      <div class="font-600 mb-2">⚙️ Settings</div>
+      <div class="settings-nav">
+        <a class="active" data-section="profile" onclick="switchSection('profile')">👤 Profile</a>
+        <a data-section="security" onclick="switchSection('security')">🔒 Security</a>
+        <a data-section="password" onclick="switchSection('password')">🔑 Password</a>
+        <a data-section="notifications" onclick="switchSection('notifications')">🔔 Notifications</a>
+        <a data-section="appearance" onclick="switchSection('appearance')">🎨 Appearance</a>
+        <a data-section="privacy" onclick="switchSection('privacy')">🛡️ Privacy</a>
+        <a data-section="connected" onclick="switchSection('connected')">🔗 Connected Accounts</a>
+        <a data-section="delete" onclick="switchSection('delete')" style="color:#dc2626;">🗑️ Delete Account</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main id="settingsContent">
+    <!-- Profile Section -->
+    <div class="settings-section active" id="section-profile">
+      <div class="card mb-4">
+        <div class="font-600 text-lg mb-3">👤 Profile Settings</div>
+        <div class="settings-grid">
+          <div class="form-row">
+            <label class="label">Full Name</label>
+            <input class="input" id="settingsName" placeholder="Your full name">
+          </div>
+          <div class="form-row">
+            <label class="label">Email</label>
+            <input class="input" id="settingsEmail" type="email" placeholder="your@email.com" disabled>
+            <div class="text-xs text-muted">Email cannot be changed. Contact support for assistance.</div>
+          </div>
+          <div class="form-row">
+            <label class="label">Country</label>
+            <select class="select" id="settingsCountry">
+              <option value="">Select Country</option>
+              <option value="Nepal">🇳🇵 Nepal</option>
+              <option value="India">🇮🇳 India</option>
+              <option value="USA">🇺🇸 USA</option>
+              <option value="UK">🇬🇧 UK</option>
+              <option value="Germany">🇩🇪 Germany</option>
+              <option value="Singapore">🇸🇬 Singapore</option>
+              <option value="Canada">🇨🇦 Canada</option>
+              <option value="Australia">🇦🇺 Australia</option>
+              <option value="Other">🌍 Other</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label class="label">Role</label>
+            <select class="select" id="settingsRole">
+              <option value="student">🎓 Student</option>
+              <option value="teacher">👨‍🏫 Teacher</option>
+              <option value="researcher">🔬 Researcher</option>
+              <option value="professional">💼 Professional</option>
+            </select>
+          </div>
+          <div class="form-row" style="grid-column:1/-1;">
+            <label class="label">Bio</label>
+            <textarea class="textarea" id="settingsBio" rows="3" placeholder="Tell us about yourself..."></textarea>
+          </div>
+        </div>
+        <button class="btn btn-primary btn-sm mt-3" onclick="saveSettings('profile')">💾 Save Profile Changes</button>
+      </div>
+    </div>
+
+    <!-- Security Section -->
+    <div class="settings-section" id="section-security" style="display:none;">
+      <div class="card mb-4">
+        <div class="font-600 text-lg mb-3">🔒 Security</div>
+        <div class="security-status">
+          <div class="security-item">
+            <span class="security-icon">✅</span>
+            <div>
+              <div class="font-600">Two-Factor Authentication</div>
+              <div class="text-sm text-muted" id="twoFactorStatus">Enabled • Authenticator app</div>
+            </div>
+            <button class="btn btn-outline btn-sm" onclick="toggleTwoFactor()">Manage</button>
+          </div>
+          <div class="security-item">
+            <span class="security-icon">🔑</span>
+            <div>
+              <div class="font-600">Passkeys</div>
+              <div class="text-sm text-muted" id="passkeyStatus">2 devices registered</div>
+            </div>
+            <button class="btn btn-outline btn-sm" onclick="managePasskeys()">Manage</button>
+          </div>
+          <div class="security-item">
+            <span class="security-icon">📍</span>
+            <div>
+              <div class="font-600">Last Login</div>
+              <div class="text-sm text-muted" id="lastLoginStatus">Loading...</div>
+            </div>
+          </div>
+          <div class="security-item">
+            <span class="security-icon">📱</span>
+            <div>
+              <div class="font-600">Active Sessions</div>
+              <div class="text-sm text-muted" id="sessionStatus">1 active session</div>
+            </div>
+            <button class="btn btn-outline btn-sm" onclick="logoutAllDevices()">Logout All</button>
+          </div>
+        </div>
+        <div style="display:flex; gap:8px; margin-top:16px; flex-wrap:wrap;">
+          <button class="btn btn-outline btn-sm" onclick="changePassword()">🔑 Change Password</button>
+          <button class="btn btn-outline btn-sm" onclick="manageTwoFactor()">📱 Manage 2FA</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Password Section -->
+    <div class="settings-section" id="section-password" style="display:none;">
+      <div class="card mb-4">
+        <div class="font-600 text-lg mb-3">🔑 Change Password</div>
+        <form id="passwordForm" onsubmit="updatePassword(event)">
+          <div class="form-row">
+            <label class="label">Current Password</label>
+            <div class="input-group">
+              <input class="input" type="password" id="currentPassword" placeholder="Enter current password" required>
+              <button type="button" class="password-toggle" onclick="togglePasswordVisibility('currentPassword')">👁️</button>
+            </div>
+          </div>
+          <div class="form-row">
+            <label class="label">New Password</label>
+            <div class="input-group">
+              <input class="input" type="password" id="newPassword" placeholder="Enter new password" required>
+              <button type="button" class="password-toggle" onclick="togglePasswordVisibility('newPassword')">👁️</button>
+            </div>
+            <div class="password-strength">
+              <div class="strength-bar"><div class="strength-fill" id="strengthFill"></div></div>
+              <span class="strength-text" id="strengthText">Password strength: Weak</span>
+            </div>
+          </div>
+          <div class="form-row">
+            <label class="label">Confirm New Password</label>
+            <div class="input-group">
+              <input class="input" type="password" id="confirmPassword" placeholder="Confirm new password" required>
+              <button type="button" class="password-toggle" onclick="togglePasswordVisibility('confirmPassword')">👁️</button>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-sm mt-3">Update Password</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Notifications Section -->
+    <div class="settings-section" id="section-notifications" style="display:none;">
+      <div class="card mb-4">
+        <div class="font-600 text-lg mb-3">🔔 Notification Preferences</div>
+        <div class="notification-options">
+          <div class="notif-option">
+            <div>
+              <div class="font-600">Email Digest</div>
+              <div class="text-sm text-muted">Weekly summary of your activity</div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="notifEmail" checked onchange="saveSettings('notifications')">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+          <div class="notif-option">
+            <div>
+              <div class="font-600">Push Notifications</div>
+              <div class="text-sm text-muted">Real-time notifications on desktop</div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="notifPush" checked onchange="saveSettings('notifications')">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+          <div class="notif-option">
+            <div>
+              <div class="font-600">SMS Notifications</div>
+              <div class="text-sm text-muted">Text messages for important updates</div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="notifSms" onchange="saveSettings('notifications')">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+          <div class="notif-option">
+            <div>
+              <div class="font-600">Event Reminders</div>
+              <div class="text-sm text-muted">Reminders for upcoming events</div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="notifEvents" checked onchange="saveSettings('notifications')">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+          <div class="notif-option">
+            <div>
+              <div class="font-600">Project Updates</div>
+              <div class="text-sm text-muted">Updates on projects you follow</div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="notifProjects" checked onchange="saveSettings('notifications')">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Appearance Section -->
+    <div class="settings-section" id="section-appearance" style="display:none;">
+      <div class="card mb-4">
+        <div class="font-600 text-lg mb-3">🎨 Appearance</div>
+        <div class="appearance-options">
+          <div class="appearance-option" onclick="setTheme('light')">
+            <div class="theme-preview light-theme">
+              <span>☀️</span>
+            </div>
+            <div class="font-600">Light</div>
+            <div class="text-xs text-muted">Default light theme</div>
+            <input type="radio" name="theme" value="light" checked hidden>
+          </div>
+          <div class="appearance-option" onclick="setTheme('dark')">
+            <div class="theme-preview dark-theme">
+              <span>🌙</span>
+            </div>
+            <div class="font-600">Dark</div>
+            <div class="text-xs text-muted">Dark mode for night</div>
+            <input type="radio" name="theme" value="dark" hidden>
+          </div>
+          <div class="appearance-option" onclick="setTheme('auto')">
+            <div class="theme-preview auto-theme">
+              <span>🔄</span>
+            </div>
+            <div class="font-600">Auto</div>
+            <div class="text-xs text-muted">Follow system theme</div>
+            <input type="radio" name="theme" value="auto" hidden>
+          </div>
+        </div>
+        <div class="form-row mt-3">
+          <label class="label">Font Size</label>
+          <select class="select" id="fontSize" onchange="saveSettings('appearance')">
+            <option value="small">Small</option>
+            <option value="medium" selected>Medium</option>
+            <option value="large">Large</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Privacy Section -->
+    <div class="settings-section" id="section-privacy" style="display:none;">
+      <div class="card mb-4">
+        <div class="font-600 text-lg mb-3">🛡️ Privacy</div>
+        <div class="privacy-options">
+          <div class="privacy-option">
+            <div>
+              <div class="font-600">Profile Visibility</div>
+              <div class="text-sm text-muted">Who can see your profile</div>
+            </div>
+            <select class="select" id="profileVisibility" onchange="saveSettings('privacy')" style="width:160px;">
+              <option value="public">🌍 Public</option>
+              <option value="private">🔒 Private</option>
+              <option value="connections">👥 Connections Only</option>
+            </select>
+          </div>
+          <div class="privacy-option">
+            <div>
+              <div class="font-600">Email Visibility</div>
+              <div class="text-sm text-muted">Who can see your email</div>
+            </div>
+            <select class="select" id="emailVisibility" onchange="saveSettings('privacy')" style="width:160px;">
+              <option value="connections">👥 Connections Only</option>
+              <option value="public">🌍 Public</option>
+              <option value="private">🔒 Private</option>
+            </select>
+          </div>
+          <div class="privacy-option">
+            <div>
+              <div class="font-600">Data Export</div>
+              <div class="text-sm text-muted">Export all your data</div>
+            </div>
+            <button class="btn btn-outline btn-sm" onclick="exportData()">📥 Export Data</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Connected Accounts Section -->
+    <div class="settings-section" id="section-connected" style="display:none;">
+      <div class="card mb-4">
+        <div class="font-600 text-lg mb-3">🔗 Connected Accounts</div>
+        <div class="connected-accounts">
+          <div class="connected-account">
+            <div class="account-icon">🔵</div>
+            <div>
+              <div class="font-600">Google</div>
+              <div class="text-sm text-muted">Connected • Primary account</div>
+            </div>
+            <button class="btn btn-outline btn-sm" onclick="disconnectAccount('Google')">Disconnect</button>
+          </div>
+          <div class="connected-account">
+            <div class="account-icon">🟣</div>
+            <div>
+              <div class="font-600">Microsoft</div>
+              <div class="text-sm text-muted">Connected</div>
+            </div>
+            <button class="btn btn-outline btn-sm" onclick="disconnectAccount('Microsoft')">Disconnect</button>
+          </div>
+          <div class="connected-account">
+            <div class="account-icon">⚫</div>
+            <div>
+              <div class="font-600">GitHub</div>
+              <div class="text-sm text-muted">Connected</div>
+            </div>
+            <button class="btn btn-outline btn-sm" onclick="disconnectAccount('GitHub')">Disconnect</button>
+          </div>
+          <div class="connected-account">
+            <div class="account-icon">➕</div>
+            <div>
+              <div class="font-600">Connect New Account</div>
+              <div class="text-sm text-muted">Link your social accounts</div>
+            </div>
+            <button class="btn btn-primary btn-sm" onclick="connectAccount()">Connect</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Delete Account Section -->
+    <div class="settings-section" id="section-delete" style="display:none;">
+      <div class="card" style="border-color:#fecaca;">
+        <div class="font-600 text-lg" style="color:#dc2626;">🗑️ Delete Account</div>
+        <div class="text-sm text-muted mt-2">Permanently delete your Scholar Junction account and all associated data.</div>
+        <div class="delete-warning mt-3">
+          <span style="font-size:20px;">⚠️</span>
+          <div>
+            <div style="font-weight:600; color:#dc2626;">This action cannot be undone!</div>
+            <div class="text-sm text-muted">Your profile, projects, messages, and all data will be permanently removed.</div>
+          </div>
+        </div>
+        <div class="form-row mt-3">
+          <label class="label">Please type "DELETE" to confirm</label>
+          <input class="input" id="deleteConfirm" placeholder="Type DELETE to confirm" style="border-color:#fecaca;">
+        </div>
+        <button class="btn btn-outline btn-sm mt-3" style="color:#dc2626;border-color:#fecaca;" onclick="requestAccountDeletion()" id="deleteAccountBtn" disabled>Request Account Deletion</button>
+        <div class="text-xs text-muted mt-2">Your account will be deactivated immediately. Admin will review and permanently delete after 30 days.</div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- Toast Container -->
+<div class="toast-container"></div>
+
+<script src="../assets/js/user-db.js"></script>
+<script src="../assets/js/app.js"></script>
+<script src="../assets/js/settings.js"></script>
+</body>
+</html>
