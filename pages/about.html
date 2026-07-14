@@ -1,73 +1,265 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>About Us — Scholar Junction</title>
-<link rel="stylesheet" href="../assets/css/global.css"><link rel="stylesheet" href="../assets/css/about.css"></head><body>
-<header class="sj-header"><div class="container-wide sj-header-inner">
-<a class="sj-brand" href="../index.html"><div class="sj-logo-box"><img src="../assets/img/logo.png"></div><span class="sj-brand-text">Scholar Junction</span></a>
-<nav class="sj-nav"><a href="../index.html">Home</a><a href="knowledge-hub.html">Knowledge Hub</a><a href="about.html" class="active">About</a></nav>
-<div class="sj-header-actions"><a href="login.html" class="btn btn-ghost btn-sm">Login</a><a href="login.html#register" class="btn btn-primary btn-sm">Join Now</a></div>
-</div></header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>About Us — Scholar Junction</title>
+<link rel="stylesheet" href="../assets/css/global.css">
+<link rel="stylesheet" href="../assets/css/about.css">
+</head>
+<body>
+<header class="sj-header">
+  <div class="container-wide sj-header-inner">
+    <a class="sj-brand" href="../index.html">
+      <div class="sj-logo-box"><img src="../assets/img/logo.png"></div>
+      <span class="sj-brand-text">Scholar Junction</span>
+    </a>
+    <nav class="sj-nav">
+      <a href="../index.html">Home</a>
+      <a href="login.html">Knowledge Hub</a>
+      <a href="about.html" class="active">About</a>
+      <a href="login.html">Dashboard</a>
+    </nav>
+    <div class="sj-header-actions">
+      <a href="login.html" class="btn btn-ghost btn-sm">Login</a>
+      <a href="login.html#register" class="btn btn-primary btn-sm">Join Now</a>
+      <div class="avatar" id="headerAvatar">AS</div>
+    </div>
+  </div>
+</header>
 
-<section style="padding:70px 0; background: radial-gradient(800px 400px at 70% -10%, rgba(124,58,237,.08), transparent), #f8fafc;">
-  <div class="container" style="max-width:860px; text-align:center;">
-    <div class="badge badge-purple">About Scholar Junction</div>
-    <h1 class="font-display" style="font-size:48px;margin-top:14px;">Building the academic OS for the next billion learners.</h1>
-    <p class="text-muted mt-4" style="font-size:18px;">Scholar Junction is an intelligent academic ecosystem where students, teachers, and communities connect, share knowledge, organize events, collaborate on projects, publish articles, and receive AI-powered academic assistance.</p>
+<!-- Hero Section with 3D Effects -->
+<section class="about-hero">
+  <div class="about-hero-bg">
+    <div class="floating-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+      <div class="shape shape-4"></div>
+    </div>
+    <div class="particles-container" id="particles"></div>
+  </div>
+  
+  <div class="container" style="max-width:860px; text-align:center; position:relative; z-index:2;">
+    <div class="badge badge-purple pulse-badge">✨ About Scholar Junction</div>
+    <h1 class="font-display gradient-text" style="font-size:48px;margin-top:14px;">Building the academic OS for the next billion learners.</h1>
+    <p class="text-muted mt-4" style="font-size:18px; max-width:700px; margin:0 auto;">Scholar Junction is an intelligent academic ecosystem where students, teachers, and communities connect, share knowledge, organize events, collaborate on projects, publish articles, and receive AI-powered academic assistance.</p>
+    
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="stat-number" data-count="187">0</span>
+        <span class="stat-label">K+ Scholars</span>
+      </div>
+      <div class="hero-stat">
+        <span class="stat-number" data-count="94">0</span>
+        <span class="stat-label">Countries</span>
+      </div>
+      <div class="hero-stat">
+        <span class="stat-number" data-count="42">0</span>
+        <span class="stat-label">K+ Articles</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3D Floating Cards -->
+  <div class="floating-card card-1">
+    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=300&fit=crop&crop=face');"></div>
+    <div class="card-content">
+      <h4>🎓 187K Scholars</h4>
+      <p>Global community</p>
+    </div>
+  </div>
+  
+  <div class="floating-card card-2">
+    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1531482615713-2afd69097998?w=400&h=300&fit=crop');"></div>
+    <div class="card-content">
+      <h4>🌍 94 Countries</h4>
+      <p>Worldwide reach</p>
+    </div>
+  </div>
+  
+  <div class="floating-card card-3">
+    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=400&h=300&fit=crop');"></div>
+    <div class="card-content">
+      <h4>📚 42K Articles</h4>
+      <p>Knowledge shared</p>
+    </div>
   </div>
 </section>
 
+<!-- Mission & Vision with 3D Hover -->
 <section class="section">
   <div class="container" style="display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:1000px;">
-    <div class="card"><h3 class="font-600 text-xl">Mission</h3><p class="text-muted mt-2">Democratize world-class academic collaboration with beautiful, fast, AI-native tooling — from Kathmandu to Cambridge.</p></div>
-    <div class="card"><h3 class="font-600 text-xl">Vision</h3><p class="text-muted mt-2">Every scholar, anywhere, publishes, learns, and builds together in one open, verified network.</p></div>
+    <div class="card mission-card">
+      <div class="card-icon">🚀</div>
+      <h3 class="font-600 text-xl">Mission</h3>
+      <p class="text-muted mt-2">Democratize world-class academic collaboration with beautiful, fast, AI-native tooling — from Kathmandu to Cambridge.</p>
+      <div class="card-glow"></div>
+    </div>
+    <div class="card vision-card">
+      <div class="card-icon">🌟</div>
+      <h3 class="font-600 text-xl">Vision</h3>
+      <p class="text-muted mt-2">Every scholar, anywhere, publishes, learns, and builds together in one open, verified network.</p>
+      <div class="card-glow"></div>
+    </div>
   </div>
 </section>
 
+<!-- Our Story with Timeline -->
 <section class="section section-muted">
   <div class="container" style="max-width:1000px;">
     <h2 class="section-title">Our Story</h2>
     <p class="section-sub">Founded 2024 in Kathmandu, growing to 187k scholars in 94 countries.</p>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:28px;" class="text-sm">
-      <div class="card"><b>2024</b><br><span class="text-muted">MVP launch • 2k users</span></div>
-      <div class="card"><b>2025</b><br><span class="text-muted">Knowledge Hub + AI v1</span></div>
-      <div class="card"><b>2026 Q1</b><br><span class="text-muted">100k scholars • SSO</span></div>
-      <div class="card"><b>2026 Q3</b><br><span class="text-muted">Scholar AI v2 • Pro</span></div>
+    
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">2024</div>
+        <div class="timeline-content">
+          <h4>🚀 MVP Launch</h4>
+          <p>Started with 2k users from Nepal</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2025</div>
+        <div class="timeline-content">
+          <h4>🤖 Knowledge Hub + AI v1</h4>
+          <p>Launched AI-powered knowledge sharing</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2026 Q1</div>
+        <div class="timeline-content">
+          <h4>🌍 100K Scholars</h4>
+          <p>Global expansion with SSO integration</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2026 Q3</div>
+        <div class="timeline-content">
+          <h4>⚡ Scholar AI v2</h4>
+          <p>Pro features and advanced AI</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- Core Values -->
 <section class="section">
   <div class="container" style="max-width:1000px;">
     <h2 class="section-title">Core Values</h2>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px;">
-      <div class="card">📖 <b>Scholar-first</b><div class="text-sm text-muted mt-2">Privacy, citations, peer-review built-in.</div></div>
-      <div class="card">✨ <b>Craft</b><div class="text-sm text-muted mt-2">Linear-grade UX, Notion-grade speed.</div></div>
-      <div class="card">🌍 <b>Open</b><div class="text-sm text-muted mt-2">Open-source components, open access option.</div></div>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">📖</div>
+        <h4><b>Scholar-first</b></h4>
+        <p class="text-sm text-muted mt-2">Privacy, citations, peer-review built-in.</p>
+        <div class="value-shine"></div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">✨</div>
+        <h4><b>Craft</b></h4>
+        <p class="text-sm text-muted mt-2">Linear-grade UX, Notion-grade speed.</p>
+        <div class="value-shine"></div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🌍</div>
+        <h4><b>Open</b></h4>
+        <p class="text-sm text-muted mt-2">Open-source components, open access option.</p>
+        <div class="value-shine"></div>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- Team Section -->
 <section class="section section-muted">
   <div class="container" style="max-width:1000px;">
     <h2 class="section-title">Meet The Team</h2>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:28px;">
-      <div class="card center"><div class="avatar" style="margin:0 auto 10px;width:56px;height:56px;">AS</div><b>Aarav S.</b><div class="text-xs text-muted">Founder • AI</div></div>
-      <div class="card center"><div class="avatar" style="margin:0 auto 10px;width:56px;height:56px;">MR</div><b>Maya R.</b><div class="text-xs text-muted">Research Lead</div></div>
-      <div class="card center"><div class="avatar" style="margin:0 auto 10px;width:56px;height:56px;">BK</div><b>Bibek K.</b><div class="text-xs text-muted">Cloud Infra</div></div>
-      <div class="card center"><div class="avatar" style="margin:0 auto 10px;width:56px;height:56px;">AN</div><b>Anusha B.</b><div class="text-xs text-muted">Product Design</div></div>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar" style="background: linear-gradient(135deg, #2563EB, #7C3AED);">
+          <span>AS</span>
+        </div>
+        <div class="team-info">
+          <h4>Aarav S.</h4>
+          <span class="team-role">Founder • AI</span>
+          <div class="team-social">
+            <a href="#">🐦</a>
+            <a href="#">🔗</a>
+            <a href="#">📧</a>
+          </div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar" style="background: linear-gradient(135deg, #7C3AED, #EC4899);">
+          <span>MR</span>
+        </div>
+        <div class="team-info">
+          <h4>Maya R.</h4>
+          <span class="team-role">Research Lead</span>
+          <div class="team-social">
+            <a href="#">🐦</a>
+            <a href="#">🔗</a>
+            <a href="#">📧</a>
+          </div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar" style="background: linear-gradient(135deg, #059669, #10B981);">
+          <span>BK</span>
+        </div>
+        <div class="team-info">
+          <h4>Bibek K.</h4>
+          <span class="team-role">Cloud Infra</span>
+          <div class="team-social">
+            <a href="#">🐦</a>
+            <a href="#">🔗</a>
+            <a href="#">📧</a>
+          </div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar" style="background: linear-gradient(135deg, #F59E0B, #EF4444);">
+          <span>AN</span>
+        </div>
+        <div class="team-info">
+          <h4>Anusha B.</h4>
+          <span class="team-role">Product Design</span>
+          <div class="team-social">
+            <a href="#">🐦</a>
+            <a href="#">🔗</a>
+            <a href="#">📧</a>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="center mt-6 text-muted text-sm">Partners: IOE Pulchowk • KU • NUS • GitHub Education • AWS Educate</div>
+    <div class="center mt-6 text-muted text-sm">
+      Partners: IOE Pulchowk • KU • NUS • GitHub Education • AWS Educate
+    </div>
   </div>
 </section>
 
+<!-- CTA -->
 <section class="section">
   <div class="container" style="max-width:820px;">
     <div class="cta-band">
-      <div><h3>Join Scholar Junction</h3><p style="opacity:.9;margin-top:4px;">Contact: hello@scholarjunction.app • Kathmandu, Nepal</p></div>
-      <a href="login.html#register" class="btn" style="background:white;color:#1d4ed8;">Create free account</a>
+      <div>
+        <h3>Join Scholar Junction</h3>
+        <p style="opacity:.9;margin-top:4px;">Contact: hello@scholarjunction.app • Kathmandu, Nepal</p>
+      </div>
+      <a href="login.html#register" class="btn pulse-btn" style="background:white;color:#1d4ed8;">Create free account</a>
     </div>
   </div>
 </section>
 
-<footer class="sj-footer"><div class="footer-bottom container-wide"><span>© 2026 Scholar Junction</span><span>Made with ♥ in Nepal</span></div></footer>
+<footer class="sj-footer">
+  <div class="footer-bottom container-wide">
+    <span>© 2026 Scholar Junction</span>
+    <span>Made with ♥ in Nepal</span>
+  </div>
+</footer>
+
+<script src="../assets/js/user-db.js"></script>
 <script src="../assets/js/app.js"></script>
 <script src="../assets/js/about.js"></script>
-</body></html>
+</body>
+</html>

@@ -568,6 +568,45 @@ document.querySelectorAll('.feature-card, .community-card, .project-card').forEa
     card.style.transition = 'transform 0.3s ease-out';
   });
 });
+// ============================================
+// ADDITIONAL ANIMATIONS - ADD TO EXISTING FILE
+// ============================================
+
+// ===== 3D TILT ON FLOATING CARDS =====
+document.querySelectorAll('.floating-card').forEach(card => {
+  card.addEventListener('mousemove', function(e) {
+    const rect = this.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = (y - centerY) / 20;
+    const rotateY = (centerX - x) / 20;
+    
+    this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px) scale(1.05)`;
+  });
+  
+  card.addEventListener('mouseleave', function() {
+    this.style.transform = '';
+    this.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+  });
+});
+
+// ===== PARALLAX ON HERO =====
+const heroBlob3d = document.querySelector('.hero-blob-3d');
+const globeWrapper = document.querySelector('.globe-wrapper');
+
+if (heroBlob3d && globeWrapper) {
+  document.addEventListener('mousemove', function(e) {
+    const x = (e.clientX / window.innerWidth - 0.5) * 20;
+    const y = (e.clientY / window.innerHeight - 0.5) * 20;
+    
+    heroBlob3d.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px) scale(1.02)`;
+    globeWrapper.style.transform = `translate(-50%, -50%) rotateX(${y * 0.5}deg) rotateY(${x * 0.5}deg)`;
+  });
+}
+
+console.log('🎨 Additional animations loaded!');
 
 // ===== PARTICLES / SPARKLE EFFECT =====
 function createSparkles() {
